@@ -1,3 +1,16 @@
 .book-wrapper {
+  width: 33.333%;
+  margin-right: 15px;
+}
 
+.book-title {
+  font-size: 14px;
+  line-height: 16px;
+  color: #545454;
+  margin: 10px 0;
+}
+
+.book-shelf-changer select {
+  height: 25px;
+  cursor: pointer;
 }
