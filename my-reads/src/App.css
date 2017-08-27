@@ -21,3 +21,20 @@ body {
   font-size: 24px;
   color: #fff;
 }
+
+.shelves-wrapper {
+  padding: 30px 0;
+}
+
+.shelves-wrapper:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+.inner {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 20px;
+}
