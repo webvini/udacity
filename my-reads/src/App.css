@@ -30,9 +30,13 @@ body {
   background-color: #f1f1f1;
 }
 
-.inner {
+.shelves-inner {
   width: 80%;
   margin: 0 auto;
+}
+
+.listing {
+  display: flex;
 }
 
 h2 {

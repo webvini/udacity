@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import './book.css';
 
 class Book extends Component {
   render() {
     return(
       <div className="book-wrapper">
-        {this.props.books.map((res) => (
-          <div>{res.title}</div>
-        ))}
+        <div className="my-book">{this.props.book.title}</div>
       </div>
     )
   }

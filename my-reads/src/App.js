@@ -5,9 +5,6 @@ import './App.css';
 import Shelves from './shelves/shelves.js';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
   
   state = {
     books: []
