@@ -10,14 +10,22 @@ class App extends Component {
     books: []
   }
 
-  componentDidMount() {
+  getAllBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
 
+  componentDidMount() {
+    this.getAllBooks();
+  }
+
+  updatedBook = () => {
+    this.getAllBooks();
+  }
+
   renderShelf = shelf => {
-    return <Shelves key={shelf.flag} shelf={shelf.title} books={this.state.books.filter(book => book.shelf === shelf.flag)} />
+    return <Shelves key={shelf.flag} shelf={shelf.title} books={this.state.books.filter(book => book.shelf === shelf.flag)} updatedBook={this.updatedBook} />
   }
 
   render() {

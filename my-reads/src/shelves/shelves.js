@@ -10,7 +10,7 @@ class Shelves extends Component {
           
           <div className="listing">
             {this.props.books.map((book) => (
-              <Book key={book.id} book={book} />
+              <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
             ))}
           </div>
         </div>
