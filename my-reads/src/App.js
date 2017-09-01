@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI.js';
 import './App.css';
 
@@ -36,15 +37,19 @@ class App extends Component {
     ];
 
     return (
-      <div className="my-read-wrapper">
-        <div className="header-wrapper">
-          <h1>My Reads</h1>
-        </div>
+      <Router>
+        <div className="my-read-wrapper">
+          <div className="header-wrapper">
+            <h1>My Reads</h1>
+          </div>
 
-        <div className="content-wrapper">
-          {shelves.map(this.renderShelf)}
+          <Route exact path='/' render={() => (
+            <div className="content-wrapper">
+              {shelves.map(this.renderShelf)}
+            </div>
+          )}/>
         </div>
-      </div>
+      </Router>
     );
   }
 }
