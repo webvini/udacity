@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI.js';
 import './App.css';
 
@@ -49,7 +49,7 @@ class App extends Component {
               {shelves.map(this.renderShelf)}
 
               <div className="open-search">
-                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+                <Link to='/search'>Add a book</Link>
               </div>
             </div>
           )}/>
