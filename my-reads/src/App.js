@@ -47,6 +47,10 @@ class App extends Component {
           <Route exact path='/' render={() => (
             <div className="content-wrapper">
               {shelves.map(this.renderShelf)}
+
+              <div className="open-search">
+                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              </div>
             </div>
           )}/>
 

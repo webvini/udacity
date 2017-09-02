@@ -22,6 +22,10 @@ body {
 }
 
 .header-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   text-align: center;
   background-color: rgb(33, 150, 243);
   padding: 15px 0;
@@ -30,6 +34,10 @@ body {
 .header-wrapper h1 {
   font-size: 24px;
   color: #fff;
+}
+
+.content-wrapper {
+  padding-top: 65px;
 }
 
 .shelves-wrapper {
@@ -41,8 +49,7 @@ body {
 }
 
 .shelves-inner {
-  width: 80%;
-  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .listing {
@@ -55,4 +62,25 @@ h2 {
   margin-bottom: 20px;
   padding-left: 15px;
   border-left: 3px solid #333;
+}
+
+.open-search {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+.open-search a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(31, 65, 70);
+  background-image: url('./icons/add.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 0;
+  cursor: pointer;
 }
