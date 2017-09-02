@@ -4,6 +4,7 @@ import * as BooksAPI from './BooksAPI.js';
 import './App.css';
 
 import Shelves from './shelves/shelves.js';
+import Search from './search/search.js';
 
 class App extends Component {
   
@@ -46,6 +47,12 @@ class App extends Component {
           <Route exact path='/' render={() => (
             <div className="content-wrapper">
               {shelves.map(this.renderShelf)}
+            </div>
+          )}/>
+
+          <Route path='/search' render={() => (
+            <div className="content-wrapper">
+              <Search />
             </div>
           )}/>
         </div>
