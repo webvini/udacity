@@ -54,6 +54,7 @@ body {
 
 .listing {
   display: flex;
+  flex-wrap: wrap;
 }
 
 h2 {
