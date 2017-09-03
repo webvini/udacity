@@ -10,6 +10,10 @@ class Book extends Component {
     });
   }
 
+  getShelfFlag = (shelf) => {
+    return (!shelf) ? "none" : shelf;
+  }
+
   render() {
     return(
       <div className="book-wrapper">
@@ -17,11 +21,12 @@ class Book extends Component {
         <h3 className="book-title">{this.props.book.title}</h3>
         
         <div className="book-shelf-changer">
-          <select defaultValue={this.props.book.shelf} onChange={this.shelfChanger(this.props.book)}>
+          <select defaultValue={this.getShelfFlag(this.props.book.shelf)} onChange={this.shelfChanger(this.props.book)}>
             <option value="none" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
             <option value="read">Read</option>
+            <option value="none">None</option>
           </select>
         </div>
       </div>
