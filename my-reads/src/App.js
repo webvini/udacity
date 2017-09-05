@@ -30,6 +30,10 @@ class App extends Component {
     return <Shelves key={shelf.flag} shelf={shelf.title} books={this.state.books.filter(book => book.shelf === shelf.flag)} updatedBook={this.updatedBook} />
   }
 
+  renderSearch = book => {
+    return <Search key={book.id} myBook={book} />
+  }
+
   render() {
     let shelves = [
       {flag: "currentlyReading", title: "Currently Reading"},
@@ -56,7 +60,23 @@ class App extends Component {
 
           <Route path='/search' render={() => (
             <div className="content-wrapper">
-              <Search />
+              <div className="search-wrapper">
+                <div className="search-books-bar">
+                  <Link to='/' className="close-search">Close</Link>
+
+                  <div className="search-books-input-wrapper">
+                    <input
+                      type="text"
+                      placeholder="Search by title or author"
+                      onChange={this.onSearch}
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="listing">
+                {this.state.books.map(this.renderSearch)}
+              </div>
             </div>
           )}/>
         </div>

@@ -10,43 +10,35 @@ class Search extends Component {
 
   state = {
     query: '',
-    books: []
+    allBooks: []
+  }
+
+  componentDidMount() {
+    // this.props.myBooks.map((book) => (
+    //   this.setState({
+    //     allBook: book.filter((book) => book.id !== this.state.allBook.id)
+    //   })
+    // ))
   }
 
   onSearch = (el) => {
     let value = el.target.value.trim();
-    (value) ? this.getBooks(value) : false;
+    (value) ? this.getAllBooks(value) : false;
   }
 
-  getBooks = (query) => {
-    BooksAPI.search(query, 20).then((books) => {
-      if(!books.error) {
-        this.setState({ books });
-      }
-    })
-  }
+  // getAllBooks = (query) => {
+  //   BooksAPI.search(query, 20).then((books) => {
+  //     if(!books.error) {
+  //       this.setState({
+  //         allBooks: books.filter((myBook) => myBook.id !== books.id)
+  //       });
+  //     }
+  //   })
+  // }
 
   render() {
     return(
-      <div className="search-wrapper">
-        <div className="search-books-bar">
-          <Link to='/' className="close-search">Close</Link>
-
-          <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              placeholder="Search by title or author"
-              onChange={this.onSearch}
-            />
-          </div>
-        </div>
-        
-        <div className="listing">
-          {this.state.books.map((book) => (
-            <Book key={book.id} book={book} />
-          ))}
-        </div>
-      </div>
+      <Book key={this.props.myBook.id} book={this.props.myBook} />
     )
   }
 }
