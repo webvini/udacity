@@ -16,7 +16,7 @@ class Book extends Component {
 
   render() {
     return(
-      <div className="book-wrapper">
+      <li className="book-wrapper">
         <img src={this.props.book.imageLinks.thumbnail} alt={this.props.book.title} />
         <h3 className="book-title">{this.props.book.title}</h3>
         
@@ -29,7 +29,7 @@ class Book extends Component {
             <option value="none">None</option>
           </select>
         </div>
-      </div>
+      </li>
     )
   }
 }

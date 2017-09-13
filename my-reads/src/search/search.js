@@ -53,9 +53,11 @@ class Search extends Component {
           </div>
         </div>
 
-        {this.state.allBooks.map((book) => (
-          <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
-        ))}
+        <ol className="listing">
+          {this.state.allBooks.map((book) => (
+            <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
+          ))}
+        </ol>
       </div>
     )
   }

@@ -8,11 +8,11 @@ class Shelves extends Component {
         <div className="shelves-inner">
           <h2>{this.props.shelf}</h2>
           
-          <div className="listing">
+          <ol className="listing">
             {this.props.books.map((book) => (
               <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     )
