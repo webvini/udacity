@@ -34,6 +34,10 @@ class Search extends Component {
     })
   }
 
+  updatedBook = () => {
+    this.props.updatedBook()
+  }
+
   render() {
     return(
       <div className="search-wrapper">
@@ -50,7 +54,7 @@ class Search extends Component {
         </div>
 
         {this.state.allBooks.map((book) => (
-          <Book key={book.id} book={book} />
+          <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
         ))}
       </div>
     )

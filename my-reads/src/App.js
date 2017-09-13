@@ -56,7 +56,7 @@ class App extends Component {
 
           <Route path='/search' render={() => (
             <div className="content-wrapper">
-              <Search books={this.state.books} />
+              <Search books={this.state.books} updatedBook={this.updatedBook} />
             </div>
           )}/>
         </div>
