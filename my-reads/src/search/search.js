@@ -59,6 +59,7 @@ class Search extends Component {
         </div>
 
         <ol className={`${this.state.loading ? "loading" : ""} listing`}>
+          <li className="loader"></li>
           {this.state.allBooks.map((book) => (
             <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
           ))}

@@ -52,7 +52,11 @@ class App extends Component {
 
           <Route exact path='/' render={() => (
             <div className={`${this.state.loading ? "loading" : ""} content-wrapper`}>
-              {shelves.map(this.renderShelf)}
+              <div className="loader"></div>
+
+              {this.state.books.length > 0 && (
+                shelves.map(this.renderShelf)
+              )}
 
               <div className="open-search">
                 <Link to='/search'>Add a book</Link>
