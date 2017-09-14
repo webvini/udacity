@@ -20,11 +20,7 @@ class Search extends Component {
 
   getAllBooks = (query) => {
     BooksAPI.search(query, 20)
-      .then(
-        this.setState({
-          loading: true
-        })
-      )
+      .then(this.setState({ loading: true }))
       .then((books) => {
         if(!books.error) {
           let allBooks = books.map(book => {

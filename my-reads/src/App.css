@@ -57,7 +57,7 @@ body {
   flex-wrap: wrap;
 }
 
-.listing.loading {
+.loading {
   opacity: .4;
 }
 

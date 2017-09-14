@@ -9,13 +9,19 @@ import Search from './search/search.js';
 class App extends Component {
   
   state = {
-    books: []
+    books: [],
+    loading: false
   }
 
   getAllBooks = () => {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-    });
+    BooksAPI.getAll()
+      .then(this.setState({ loading: true }))
+      .then((books) => {
+        this.setState({
+          books,
+          loading: false
+        });
+      });
   }
 
   componentDidMount() {
@@ -45,7 +51,7 @@ class App extends Component {
           </div>
 
           <Route exact path='/' render={() => (
-            <div className="content-wrapper">
+            <div className={`${this.state.loading ? "loading" : ""} content-wrapper`}>
               {shelves.map(this.renderShelf)}
 
               <div className="open-search">
