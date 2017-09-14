@@ -9,8 +9,8 @@ import './search.css';
 class Search extends Component {
 
   state = {
-    query: '',
-    allBooks: []
+    allBooks: [],
+    loading: false
   }
 
   onSearch = (el) => {
@@ -19,19 +19,28 @@ class Search extends Component {
   }
 
   getAllBooks = (query) => {
-    BooksAPI.search(query, 20).then((books) => {
-      if(!books.error) {
-        let allBooks = books.map(book => {
-          let foundMyBook = this.props.books.filter(myBook => book.id === myBook.id)[0]
-          if(foundMyBook){
-            book.shelf = foundMyBook.shelf
-          }
-          return book
+    BooksAPI.search(query, 20)
+      .then(
+        this.setState({
+          loading: true
         })
+      )
+      .then((books) => {
+        if(!books.error) {
+          let allBooks = books.map(book => {
+            let foundMyBook = this.props.books.filter(myBook => book.id === myBook.id)[0]
+            if(foundMyBook){
+              book.shelf = foundMyBook.shelf
+            }
+            return book
+          })
 
-        this.setState({ allBooks })
-      }
-    })
+          this.setState({
+            allBooks,
+            loading: false
+          })
+        }
+      })
   }
 
   updatedBook = () => {
@@ -53,7 +62,7 @@ class Search extends Component {
           </div>
         </div>
 
-        <ol className="listing">
+        <ol className={`${this.state.loading ? "loading" : ""} listing`}>
           {this.state.allBooks.map((book) => (
             <Book key={book.id} book={book} updatedBook={this.props.updatedBook} />
           ))}

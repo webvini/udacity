@@ -57,6 +57,10 @@ body {
   flex-wrap: wrap;
 }
 
+.listing.loading {
+  opacity: .4;
+}
+
 h2 {
   font-size: 20px;
   color: #333;
