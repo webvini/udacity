@@ -29,6 +29,7 @@ body {
   text-align: center;
   background-color: rgb(33, 150, 243);
   padding: 15px 0;
+  z-index: 1;
 }
 
 .header-wrapper h1 {

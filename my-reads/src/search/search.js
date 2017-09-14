@@ -15,7 +15,7 @@ class Search extends Component {
 
   onSearch = (el) => {
     let value = el.target.value.trim();
-    (value) ? this.getAllBooks(value) : false;
+    (value) ? this.getAllBooks(value) : this.setState({ allBooks: [] });
   }
 
   getAllBooks = (query) => {
