@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import escapeRegExp from 'escape-string-regexp'
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './../BooksAPI.js';
 
@@ -10,12 +9,19 @@ class Search extends Component {
 
   state = {
     allBooks: [],
-    loading: false
+    loading: false,
+    isEmpty: false
   }
 
   onSearch = (el) => {
-    let value = el.target.value.trim();
-    (value) ? this.getAllBooks(value) : this.setState({ allBooks: [] });
+    let value = el.target.value.trim()
+    let cleanValue = value.match(/[^\w]/)
+
+    if(value && !cleanValue){
+      this.getAllBooks(value)
+    }else{ 
+      this.setState({ allBooks: [] })
+    }
   }
 
   getAllBooks = (query) => {
@@ -33,7 +39,14 @@ class Search extends Component {
 
         this.setState({
           allBooks,
-          loading: false
+          loading: false,
+          isEmpty: false
+        })
+      }else{
+        this.setState({
+          allBooks: [],
+          loading: false,
+          isEmpty: true
         })
       }
     })
@@ -57,6 +70,10 @@ class Search extends Component {
             />
           </div>
         </div>
+
+        {this.state.isEmpty && (
+          <p className="text-warning">Not found</p>
+        )}
 
         <ol className={`${this.state.loading ? "loading" : ""} listing`}>
           <li className="loader"></li>

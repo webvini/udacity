@@ -38,3 +38,7 @@
   background-size: 28px;
   font-size: 0;
 }
+
+.search-wrapper p {
+  text-align: center;
+}
