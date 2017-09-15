@@ -5,8 +5,10 @@ import './book.css';
 class Book extends Component {
   
   shelfChanger = (book) => (e) => {
-    BooksAPI.update(book, e.target.value).then(() => {
-      this.props.updatedBook()
+    let shelf = e.target.value
+
+    BooksAPI.update(book, shelf).then(() => {
+      this.props.updatedBook(book, shelf)
     });
   }
 

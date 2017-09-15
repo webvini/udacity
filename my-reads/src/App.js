@@ -13,23 +13,27 @@ class App extends Component {
     loading: false
   }
 
-  getAllBooks = () => {
-    BooksAPI.getAll()
-      .then(this.setState({ loading: true }))
-      .then((books) => {
-        this.setState({
-          books,
-          loading: false
-        });
-      });
-  }
-
   componentDidMount() {
-    this.getAllBooks();
+    this.setState({ loading: true })
+
+    BooksAPI.getAll().then((books) => {
+      this.setState({
+        books,
+        loading: false
+      })
+    })
   }
 
-  updatedBook = () => {
-    this.getAllBooks();
+  updatedBook = (book, shelf) => {
+    let allbooks = this.state.books
+    let books = allbooks.map(myBook => {
+      if(myBook.id === book.id) {
+        myBook.shelf = shelf
+      }
+      return myBook
+    })
+  
+    this.setState({ books })
   }
 
   renderShelf = shelf => {

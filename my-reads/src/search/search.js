@@ -19,24 +19,24 @@ class Search extends Component {
   }
 
   getAllBooks = (query) => {
-    BooksAPI.search(query, 20)
-      .then(this.setState({ loading: true }))
-      .then((books) => {
-        if(!books.error) {
-          let allBooks = books.map(book => {
-            let foundMyBook = this.props.books.filter(myBook => book.id === myBook.id)[0]
-            if(foundMyBook){
-              book.shelf = foundMyBook.shelf
-            }
-            return book
-          })
+    this.setState({ loading: true })
 
-          this.setState({
-            allBooks,
-            loading: false
-          })
-        }
-      })
+    BooksAPI.search(query, 20).then((books) => {
+      if(!books.error) {
+        let allBooks = books.map(book => {
+          let foundMyBook = this.props.books.filter(myBook => book.id === myBook.id)[0]
+          if(foundMyBook){
+            book.shelf = foundMyBook.shelf
+          }
+          return book
+        })
+
+        this.setState({
+          allBooks,
+          loading: false
+        })
+      }
+    })
   }
 
   updatedBook = () => {
