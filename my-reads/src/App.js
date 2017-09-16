@@ -45,7 +45,7 @@ class App extends Component {
       {flag: "currentlyReading", title: "Currently Reading"},
       {flag: "wantToRead", title: "Want"},
       {flag: "read", title: "Read"}
-    ];
+    ]
 
     return (
       <Router>

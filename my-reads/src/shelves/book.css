@@ -11,8 +11,13 @@
   border-bottom-color: rgb(33, 150, 243);
 }
 
-.book-wrapper img {
-  max-height: 160px;
+.book-avatar {
+  height: 160px;
+}
+
+.no-image {
+  background: url(./../icons/camera-off.svg) center center no-repeat;
+  opacity: .5;
 }
 
 .book-title {
@@ -20,7 +25,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #545454;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .book-shelf-changer select {
