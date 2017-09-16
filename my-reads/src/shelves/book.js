@@ -3,7 +3,7 @@ import * as BooksAPI from './../BooksAPI.js';
 import './book.css';
 
 class Book extends Component {
-  
+
   shelfChanger = (book) => (e) => {
     let shelf = e.target.value
 

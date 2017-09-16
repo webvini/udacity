@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI.js';
 import './App.css';
 
-import Shelves from './shelves/shelves.js';
+import SHELVES from './shelves/shelves.js';
+import ShelfContainer from './shelves/shelf-container.js';
 import Search from './search/search.js';
 
 class App extends Component {
@@ -26,27 +27,29 @@ class App extends Component {
 
   updatedBook = (book, shelf) => {
     let allbooks = this.state.books
-    let books = allbooks.map(myBook => {
-      if(myBook.id === book.id) {
-        myBook.shelf = shelf
-      }
-      return myBook
-    })
-  
-    this.setState({ books })
+    let foundBook = allbooks.filter(myBook => myBook.id === book.id)
+
+    if(foundBook.length){
+      let books = allbooks.map(myBook => {
+        if(myBook.id === book.id) {
+          myBook.shelf = shelf
+        }
+        return myBook
+      })
+      
+      this.setState({ books })
+    }else{
+      book.shelf = shelf
+      allbooks.push(book)
+      this.setState({ books: allbooks })
+    }
   }
 
   renderShelf = shelf => {
-    return <Shelves key={shelf.flag} shelf={shelf.title} books={this.state.books.filter(book => book.shelf === shelf.flag)} updatedBook={this.updatedBook} />
+    return <ShelfContainer key={shelf.flag} shelf={shelf.title} books={this.state.books.filter(book => book.shelf === shelf.flag)} updatedBook={this.updatedBook} />
   }
 
   render() {
-    let shelves = [
-      {flag: "currentlyReading", title: "Currently Reading"},
-      {flag: "wantToRead", title: "Want"},
-      {flag: "read", title: "Read"}
-    ]
-
     return (
       <Router>
         <div className="my-read-wrapper">
@@ -59,7 +62,7 @@ class App extends Component {
               <div className="loader"></div>
 
               {this.state.books.length > 0 && (
-                shelves.map(this.renderShelf)
+                SHELVES.map(this.renderShelf)
               )}
 
               <div className="open-search">

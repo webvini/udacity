@@ -1,24 +1,7 @@
-import React from 'react';
-import Book from './book.js';
+const SHELVES = [
+  {flag: "currentlyReading", title: "Currently Reading"},
+  {flag: "wantToRead", title: "Want"},
+  {flag: "read", title: "Read"}
+]
 
-const Shelves = (props) => {
-  return(
-    <div className="shelves-wrapper">
-      <div className="shelves-inner">
-        <h2>{props.shelf}</h2>
-        
-        {!props.books.length && (
-          <p className="text-warning">You have no book on this shelf</p>
-        )}
-
-        <ol className="listing">
-          {props.books.map((book) => (
-            <Book key={book.id} book={book} updatedBook={props.updatedBook} />
-          ))}
-        </ol>
-      </div>
-    </div>
-  )
-}
-
-export default Shelves;
+export default SHELVES;
