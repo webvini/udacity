@@ -1,0 +1,28 @@
+.post-wrapper {
+  border-top: 2px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.post-inner {
+  background-color: #fff;
+  padding: 15px;
+}
+
+.post-wrapper .post-title {
+  margin-bottom: 10px;
+}
+
+.footer-details {
+  padding: 5px 15px;
+  background-color: #ddd;
+}
+
+.footer-details ul li {
+  display: inline-block;
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.footer-details ul li i {
+  margin-right: 3px;
+}
