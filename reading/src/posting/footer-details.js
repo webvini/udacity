@@ -7,6 +7,11 @@ class FooterDetails extends Component {
         <ul>
           <li><i className="fa fa-user" aria-hidden="true"></i> Vinicius Silva</li>
           <li><i className="fa fa-calendar" aria-hidden="true"></i> 06/06/2017</li>
+          <li><i className="fa fa-comments" aria-hidden="true"></i> 8</li>
+        </ul>
+        <ul>
+          <li><i className="fa fa-thumbs-down" aria-hidden="true"></i> (8)</li>
+          <li><i className="fa fa-thumbs-up" aria-hidden="true"></i> (12)</li>
         </ul>
       </div>
     )

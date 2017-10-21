@@ -11,7 +11,7 @@ class App extends Component {
           <h1>Reading</h1>
         </header>
         
-        <div className="main-container">
+        <section className="main-container">
           <div className="container-inner">
             
             <Post />
@@ -19,7 +19,7 @@ class App extends Component {
             <Post />
 
           </div>
-        </div>
+        </section>
     </div>
     );
   }

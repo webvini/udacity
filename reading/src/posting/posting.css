@@ -1,10 +1,40 @@
 .post-wrapper {
-  border-top: 2px solid #ccc;
-  margin-bottom: 20px;
+  display: inline-block;
+  width: 45%;
+  margin: 0 2.5% 5% 2.5%;
+}
+
+@media (max-width: 768px) {
+  .post-wrapper {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.post-head {
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+}
+
+.post-head i {
+  font-size: 100px;
+}
+
+.post-category {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgb(33, 150, 243);
+  padding: 5px 15px;
+  position: absolute;
+  right: 20px;
+  bottom: -10px;
 }
 
 .post-inner {
-  background-color: #fff;
   padding: 15px;
 }
 
@@ -12,14 +42,45 @@
   margin-bottom: 10px;
 }
 
+.post-buttons-control {
+  text-align: right;
+}
+
+.post-buttons-control a {
+  margin-left: 10px;
+  font-size: 18px;
+  color: #999;
+}
+
+.post-buttons-control a:hover {
+  color: #333;
+}
+
+.post-buttons-control .post-delete:hover {
+  color: #eb191e;
+}
+
 .footer-details {
   padding: 5px 15px;
-  background-color: #ddd;
+  background-color: #545454;
+}
+
+.footer-details ul {
+  display: inline-block;
+}
+
+.footer-details ul:last-child {
+  float: right;
+}
+
+.footer-details ul:last-child li {
+  font-size: 14px;
 }
 
 .footer-details ul li {
   display: inline-block;
   font-size: 12px;
+  color: #fff;
   margin-right: 15px;
 }
 
