@@ -1,20 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addPost } from './actions'
+import { receivePosts, fetchPosts } from './actions'
 import './App.css'
 
-import Post from './posting/post-wrapper'
+import Post from './components/post/index'
 
 class App extends Component {
 
-  state = {
-    post: null
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+
+  posts = () => {
+    if( this.props.posts.allPosts ) {
+
+      const { allPosts } = this.props.posts
+
+      return (
+        allPosts.map(post => (
+          <Post key={post.id} post={post} />
+        ))
+      )
+    }
   }
 
   render() {
-
-    console.log(this.props)
-
     return (
       <div className="app-wrapper">
         <header className="main-header">
@@ -24,24 +34,26 @@ class App extends Component {
         <section className="main-container">
           <div className="container-inner">
             
-            <Post />
-            <Post />
-            <Post />
+            { this.posts() }
 
           </div>
         </section>
     </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({
-  post: state.post
-})
+function mapStateToProps({ posts }) {
+  return {
+    posts
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
-  addPost: (data) => dispatch(addPost(data))
-})
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchPosts: () => dispatch(fetchPosts())
+  }
+}
 
 export default connect(
   mapStateToProps,

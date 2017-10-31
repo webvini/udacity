@@ -1,17 +1,22 @@
-import { ADD_POST } from '../actions'
+import { combineReducers } from 'redux'
+
+import { RECEIVE_POST } from '../actions'
 
 const initialInfo = 'BACON'
 
-export const post = (state = initialInfo, action) => {
-
-  const { post } = action
+function posts(state = {}, action) {
 
   switch (action.type) {
-    case ADD_POST:
-      return state
+    case RECEIVE_POST:
+      return {
+        ...state,
+        allPosts: action.posts
+      }
     default:
-      return state
+      return { ...state }
   }
 }
 
-export default post
+export default combineReducers({
+  posts
+})
