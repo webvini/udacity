@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import * as moment from "moment";
+
 import './posting.css'
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -29,7 +31,7 @@ class Post extends Component {
         <div className="footer-details">
           <ul>
             <li><i className="fa fa-user" aria-hidden="true"></i> {post.author}</li>
-            <li><i className="fa fa-calendar" aria-hidden="true"></i> 06/06/2017</li>
+            <li><i className="fa fa-calendar" aria-hidden="true"></i> {moment(post.timestamp).fromNow()}</li>
             <li><i className="fa fa-comments" aria-hidden="true"></i> {post.commentCount}</li>
           </ul>
           <ul>
