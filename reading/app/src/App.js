@@ -16,10 +16,13 @@ class App extends Component {
   posts = () => {
     if( this.props.posts.allPosts ) {
       const { allPosts } = this.props.posts
+      const { selected } = this.props
 
       return (
-        allPosts.map(post => (
-          <Post key={post.id} post={post} />
+        allPosts
+          .filter(post => post.category === selected.category || selected.category === undefined || selected.category === 'all')
+          .map(post => (
+            <Post key={post.id} post={post} />
         ))
       )
     }
@@ -64,10 +67,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ posts, categories }) {
+function mapStateToProps({ posts, categories, selected }) {
   return {
     posts,
-    categories
+    categories,
+    selected
   }
 }
 

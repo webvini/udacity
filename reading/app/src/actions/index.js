@@ -7,6 +7,7 @@ import * as API from '../util/api'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const REMOVE_POST = 'REMOVE_POST'
+export const SELECT_CATEGORY ='SELECT_CATEGORY'
 
 // export const receivePosts = posts => ({
 //   type: RECEIVE_POST,
@@ -27,6 +28,12 @@ export function fetchPosts() {
 export function fetchCategories() {
   return dispatch => {
     API.getAllCategories().then(categories => dispatch({ type: RECEIVE_CATEGORY, categories }))
+  }
+}
+
+export function setSelected(target, object) {
+  return dispatch => {
+    dispatch({ type: SELECT_CATEGORY, target, object })
   }
 }
 

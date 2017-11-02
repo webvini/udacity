@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setSelected } from './../../actions'
 import './style.css'
 
 class Category extends Component {
 
   categoryChanger = () => (e) => {
     let value = e.target.value
+    const { setSelected } = this.props
+
+    setSelected('category', value)
   }
 
   render() {
@@ -13,7 +18,7 @@ class Category extends Component {
 
     return (
       <select className="category-select" onChange={this.categoryChanger()}>
-        <option>All category</option>
+        <option value="all">All category</option>
         { categories.map(category => (
           <option key={category.name} value={category.name}>{category.name}</option>
         )) }
@@ -22,4 +27,16 @@ class Category extends Component {
   }
 }
 
-export default Category
+function mapStateToProps({ selected }) {
+  return {
+    selected
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelected: (target, object) => dispatch(setSelected(target, object))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Category);
