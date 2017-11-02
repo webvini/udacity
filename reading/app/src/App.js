@@ -31,9 +31,10 @@ class App extends Component {
   categories = () => {
     if( this.props.categories.allCategories ) {
       const { allCategories } = this.props.categories
+      const { history } = this.props
 
       return (
-        <Category categories={allCategories} />
+        <Category categories={allCategories} history={history} />
       )
     }
   }

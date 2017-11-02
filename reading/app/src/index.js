@@ -7,6 +7,8 @@ import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import { Provider } from 'react-redux'
+import { Switch, Route, Router } from 'react-router-dom'
+import createHistory from 'history/createBrowserHistory'
 
 const store = createStore(
   reducer,
@@ -15,9 +17,15 @@ const store = createStore(
   )
 )
 
+const history = createHistory();
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        <Route path="/" component={ App } />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

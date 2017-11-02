@@ -9,8 +9,7 @@ class Post extends Component {
   render() {
 
     const { post } = this.props
-    console.log(post)
-
+    
     return (
       <div className="post-wrapper">
         <div className="post-buttons-control">
