@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux'
 
-import { RECEIVE_POST } from '../actions'
+import { RECEIVE_POST, RECEIVE_CATEGORY } from '../actions'
 
-const initialInfo = 'BACON'
-
-function posts(state = {}, action) {
-
+const posts = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_POST:
       return {
@@ -17,6 +14,19 @@ function posts(state = {}, action) {
   }
 }
 
+const categories = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_CATEGORY:
+      return {
+        ...state,
+        allCategories: action.categories
+      }
+    default:
+      return { ...state }
+  }
+}
+
 export default combineReducers({
-  posts
+  posts,
+  categories
 })
