@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comment from './../comment/index'
 import { connect } from 'react-redux'
 import * as moment from "moment";
 import { setSelected } from './../../actions'
@@ -35,8 +36,8 @@ class Post extends Component {
     return (
       <div className="post-wrapper">
         <div className="post-buttons-control">
-          <a className="post-edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          <a className="post-delete"><i className="fa fa-trash" aria-hidden="true"></i></a>
+          <button className="post-edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button className="post-delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
         </div>
 
         <div className="post-head">
@@ -61,10 +62,14 @@ class Post extends Component {
           </ul>
         </div>
 
-        <button className="btn btn-details" onClick={() => this.onDetails(post)}><i className="fa fa-plus" aria-hidden="true"></i> Details</button>
+        { !details &&
+          <button className="btn btn-details" onClick={() => this.onDetails(post)}><i className="fa fa-plus" aria-hidden="true"></i> Details</button>
+        }
 
         { details &&
-          <h1>Details</h1>
+          <div className="view-comments">
+            <Comment postId={post.id} />
+          </div>
         }
       </div>
     )
@@ -84,4 +89,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(Post)

@@ -23,7 +23,7 @@ class App extends Component {
         allPosts
           .filter(post => post.id === current)
           .map(post => (
-            <Post key={post.id} post={post} history={history} />
+            <Post key={post.id} post={post} history={history} details={true} />
         ))
       )
     }
@@ -68,7 +68,7 @@ class App extends Component {
         <section className="main-container">
           <div className="container-inner">
             
-            <div className="view-category">
+            <div className="view-categories">
               { !selected.post &&
                 this.categories()
               }
