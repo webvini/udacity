@@ -7,7 +7,8 @@ class Category extends Component {
 
   componentDidMount() {
     const { setSelected } = this.props
-    setSelected('category', this.getLocation())
+    let path = (this.getLocation() === "") ? "all" : this.getLocation()
+    setSelected('category', path)
   }
 
   categoryChanger = () => (e) => {

@@ -13,16 +13,32 @@ class App extends Component {
     this.props.fetchCategories()
   }
 
+  post = (selectedPost) => {
+    if( this.props.posts.allPosts ) {
+      const { allPosts } = this.props.posts
+      const { history } = this.props
+      const current = (typeof selectedPost === "object") ? selectedPost.id : selectedPost
+
+      return (
+        allPosts
+          .filter(post => post.id === current)
+          .map(post => (
+            <Post key={post.id} post={post} history={history} />
+        ))
+      )
+    }
+  }
+
   posts = () => {
     if( this.props.posts.allPosts ) {
       const { allPosts } = this.props.posts
-      const { selected } = this.props
+      const { selected, history } = this.props
 
       return (
         allPosts
           .filter(post => post.category === selected.category || selected.category === undefined || selected.category === 'all')
           .map(post => (
-            <Post key={post.id} post={post} />
+            <Post key={post.id} post={post} history={history} />
         ))
       )
     }
@@ -40,6 +56,9 @@ class App extends Component {
   }
 
   render() {
+
+    const { selected, history } = this.props
+
     return (
       <div className="app-wrapper">
         <header className="main-header">
@@ -50,15 +69,21 @@ class App extends Component {
           <div className="container-inner">
             
             <div className="view-category">
-              { this.categories() }
+              { !selected.post &&
+                this.categories()
+              }
             </div>
 
             <div className="view-posts">
-              { this.posts() }
+              { !selected.post &&
+                this.posts()
+              }
             </div>
 
             <div className="view-details">
-              
+              { selected.post &&
+                this.post(selected.post)
+              }
             </div>
 
           </div>

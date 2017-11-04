@@ -1,15 +1,37 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import * as moment from "moment";
+import { setSelected } from './../../actions'
 
-import './posting.css'
+import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
 
 class Post extends Component {
 
+  componentDidMount() {
+    const { setSelected } = this.props
+    setSelected('post', this.getLocation())
+  }
+
+  onDetails(post) {
+    const { setSelected } = this.props
+    setSelected('post', post)
+    this.goTo(post)
+  }
+
+  getLocation = () => {
+    const { location } = this.props.history
+    return location.pathname.split("/")[2]
+  }
+
+  goTo = (post) => {
+    this.props.history.push(`/${post.category}/${post.id}`)
+  }
+
   render() {
 
-    const { post } = this.props
-    
+    const { post, details } = this.props
+
     return (
       <div className="post-wrapper">
         <div className="post-buttons-control">
@@ -38,10 +60,28 @@ class Post extends Component {
             <li><i className="fa fa-thumbs-up" aria-hidden="true"></i> (12)</li>
           </ul>
         </div>
+
+        <button className="btn btn-details" onClick={() => this.onDetails(post)}><i className="fa fa-plus" aria-hidden="true"></i> Details</button>
+
+        { details &&
+          <h1>Details</h1>
+        }
       </div>
     )
   }
 
 }
 
-export default Post
+function mapStateToProps({ selected }) {
+  return {
+    selected
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelected: (target, object) => dispatch(setSelected(target, object))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

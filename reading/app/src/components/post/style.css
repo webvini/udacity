@@ -27,7 +27,7 @@
   font-size: 12px;
   font-weight: bold;
   color: #fff;
-  background-color: rgb(33, 150, 243);
+  background-color: #eb191e;
   padding: 5px 15px;
   position: absolute;
   right: 20px;
@@ -86,4 +86,8 @@
 
 .footer-details ul li i {
   margin-right: 3px;
+}
+
+.btn-details {
+  margin: 15px 0;
 }

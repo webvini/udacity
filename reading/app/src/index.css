@@ -14,3 +14,17 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 p {
   font-size: 14px;
 }
+
+.btn {
+  width: 100%;
+  padding: 5px 15px;
+  border: none;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgb(33, 150, 243);
+}
+
+.btn:hover {
+  background-color: rgb(15, 58, 93);
+}

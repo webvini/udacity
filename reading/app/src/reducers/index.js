@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
-import { RECEIVE_POST, RECEIVE_CATEGORY, SELECT_CATEGORY } from '../actions'
+import { RECEIVE_POSTS, RECEIVE_CATEGORY, SELECT } from '../actions'
 
 const posts = (state = {}, action) => {
   switch (action.type) {
-    case RECEIVE_POST:
+    case RECEIVE_POSTS:
       return {
         ...state,
         allPosts: action.posts
@@ -30,7 +30,7 @@ const selected = (state = {}, action) => {
   const { target, object } = action
 
   switch (action.type) {
-    case SELECT_CATEGORY:
+    case SELECT:
       return {
         ...state,
         [target]: object
