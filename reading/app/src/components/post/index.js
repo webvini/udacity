@@ -36,8 +36,8 @@ class Post extends Component {
     return (
       <div className="post-wrapper">
         <div className="post-buttons-control">
-          <button className="post-edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-          <button className="post-delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
+          <button className="post-edit btn-icon" title="Post edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button className="post-delete btn-icon" title="Post delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
         </div>
 
         <div className="post-head">

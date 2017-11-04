@@ -46,20 +46,6 @@
   text-align: right;
 }
 
-.post-buttons-control a {
-  margin-left: 10px;
-  font-size: 18px;
-  color: #999;
-}
-
-.post-buttons-control a:hover {
-  color: #333;
-}
-
-.post-buttons-control .post-delete:hover {
-  color: #eb191e;
-}
-
 .footer-details {
   padding: 5px 15px;
   background-color: #545454;

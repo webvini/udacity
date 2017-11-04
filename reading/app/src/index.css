@@ -28,3 +28,12 @@ p {
 .btn:hover {
   background-color: rgb(15, 58, 93);
 }
+
+.btn-icon {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.btn-icon:first-child {
+  margin-right: 10px;
+}
