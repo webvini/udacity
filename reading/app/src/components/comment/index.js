@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchComments } from './../../actions'
+import Form from './form'
 
 import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
@@ -35,10 +36,14 @@ class Comment extends Component {
     return (
       <div className="comment-wrapper">
         <h2>Comments</h2>
-        
+
         <ul className="comment-container">
           { this.comment() }
         </ul>
+
+        <div className="view-form">
+          <Form />
+        </div>
       </div>
     )
   }

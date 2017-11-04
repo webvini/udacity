@@ -2,6 +2,12 @@
   margin: 25px 0;
 }
 
+.comment-container {
+  height: 200px;
+  margin-bottom: 30px;
+  overflow-y: auto;
+}
+
 .comment-container li {
   display: block;
   padding: 10px 0;
@@ -11,4 +17,27 @@
 
 .comment-content {
   margin: 10px 0;
+}
+
+.form-wrapper label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-wrapper label span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-wrapper input {
+  width: 45%;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.form-wrapper textarea {
+  width: 96%;
+  padding: 2%;
+  font-size: 14px;
 }
