@@ -35,6 +35,9 @@ class Comment extends Component {
   }
 
   render() {
+
+    const { postId } = this.props
+
     return (
       <div className="comment-wrapper">
         <h2>Comments</h2>
@@ -44,7 +47,7 @@ class Comment extends Component {
         </ul>
 
         <div className="view-form">
-          <Form />
+          <Form postId={postId} />
         </div>
       </div>
     )

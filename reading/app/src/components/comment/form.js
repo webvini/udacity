@@ -5,37 +5,29 @@ import { addComment } from './../../actions'
 class Form extends Component {
 
   state = {
-    nameError: true,
-    commentError: true
+    name: null,
+    comment: null
   }
 
-  handleName = (el) => {
-    let value = el.target.value
+  handleInputChange = (el) => {
+    const value = el.target.value
+    const name = el.target.name
 
     this.setState({
-      nameError: (value.length <= 0) ? true : false
+      [name]: value
     })
   }
 
-  handleComment = (el) => {
-    let value = el.target.value
-
-    this.setState({
-      commentError: (value.length <= 0) ? true : false
-    })
-  }
-
-  createComment = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
-    
-    const { addComment } = this.props
+
+    const { addComment, postId } = this.props
 
     const comment = {
-      id: 33,
-      timestamp: "1469479767190",
-      body: 'Lorem ipsum dolar bacon',
-      author: 'PORRAAAAAA',
-      parentId: '8xf0y6ziyjabvozdd253nd',
+      id: 10,
+      body: this.state.comment,
+      author: this.state.name,
+      parentId: postId,
     }
 
     addComment(comment)
@@ -47,18 +39,18 @@ class Form extends Component {
 
     return (
       <div className="form-wrapper">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             <span>Name</span>
-            <input type="text" onChange={this.handleName} />
+            <input type="text" name="name" onChange={this.handleInputChange} />
           </label>
 
           <label>
             <span>Make a comment</span>
-            <textarea onChange={this.handleComment}></textarea>
+            <textarea name="comment" onChange={this.handleInputChange}></textarea>
           </label>
 
-          <button className="btn" disabled={error} onClick={this.createComment}>Send</button>
+          <button type="submit" className="btn">Send</button>
         </form>
       </div>
     )
