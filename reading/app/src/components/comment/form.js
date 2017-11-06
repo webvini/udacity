@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addComment } from './../../actions'
 
 class Form extends Component {
 
@@ -23,6 +25,22 @@ class Form extends Component {
     })
   }
 
+  createComment = (e) => {
+    e.preventDefault()
+    
+    const { addComment } = this.props
+
+    const comment = {
+      id: 33,
+      timestamp: "1469479767190",
+      body: 'Lorem ipsum dolar bacon',
+      author: 'PORRAAAAAA',
+      parentId: '8xf0y6ziyjabvozdd253nd',
+    }
+
+    addComment(comment)
+  }
+
   render() {
 
     const error = this.state.nameError || this.state.commentError
@@ -40,11 +58,26 @@ class Form extends Component {
             <textarea onChange={this.handleComment}></textarea>
           </label>
 
-          <button className="btn" disabled={error}>Send</button>
+          <button className="btn" disabled={error} onClick={this.createComment}>Send</button>
         </form>
       </div>
     )
   }
 }
 
-export default Form
+function mapStateToProps({ comments }) {
+  return {
+    comments
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addComment: (comment) => dispatch(addComment(comment)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form)
