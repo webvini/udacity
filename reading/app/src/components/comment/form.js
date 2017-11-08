@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
 import { addComment } from './../../actions'
 
 class Form extends Component {
 
   state = {
-    name: null,
-    comment: null
+    name: '',
+    comment: ''
   }
 
   handleInputChange = (el) => {
@@ -24,13 +25,22 @@ class Form extends Component {
     const { addComment, postId } = this.props
 
     const comment = {
-      id: 10,
+      id: uuid().split("-").join(""),
+      timestamp: Date.now(),
       body: this.state.comment,
       author: this.state.name,
       parentId: postId,
     }
 
     addComment(comment)
+    this.onEmpty()
+  }
+
+  onEmpty = () => {
+    this.setState({
+      name: '',
+      comment: ''
+    })
   }
 
   render() {
@@ -42,12 +52,12 @@ class Form extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             <span>Name</span>
-            <input type="text" name="name" onChange={this.handleInputChange} />
+            <input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} />
           </label>
 
           <label>
             <span>Make a comment</span>
-            <textarea name="comment" onChange={this.handleInputChange}></textarea>
+            <textarea name="comment" onChange={this.handleInputChange} value={this.state.comment}></textarea>
           </label>
 
           <button type="submit" className="btn">Send</button>
