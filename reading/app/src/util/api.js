@@ -22,3 +22,8 @@ export const setComment = (comment) =>
   fetch(`${api}/comments/`, { method: 'POST', headers, body: JSON.stringify(comment) })
     .then(res => res.json())
     .catch(error => error)
+
+export const deleteComment = (comment) =>
+  fetch(`${api}/comments/${comment}`, { method: 'DELETE', headers })
+    .then(res => res.json())
+    .catch(error => error)

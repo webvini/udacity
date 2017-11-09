@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { RECEIVE_POSTS, RECEIVE_CATEGORY, SELECT, RECEIVE_COMMENT, ADD_COMMENT } from '../actions'
+import { RECEIVE_POSTS, RECEIVE_CATEGORY, SELECT, RECEIVE_COMMENT, ADD_COMMENT, DELETE_COMMENT } from '../actions'
 
 const posts = (state = {}, action) => {
   switch (action.type) {
@@ -27,6 +27,11 @@ const comments = (state = {}, action) => {
       return {
         ...state,
         allComments: state.allComments.concat([comment])
+      }
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        allComments: state.allComments.filter(post => post.id !== comment.id)
       }
     default:
       return { ...state }
