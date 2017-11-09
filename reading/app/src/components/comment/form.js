@@ -45,8 +45,6 @@ class Form extends Component {
 
   render() {
 
-    const error = this.state.nameError || this.state.commentError
-
     return (
       <div className="form-wrapper">
         <form onSubmit={this.handleSubmit}>
