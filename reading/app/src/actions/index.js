@@ -5,6 +5,8 @@ export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const COMMENT_SELECTED = 'COMMENT_SELECTED'
 export const REMOVE_POST = 'REMOVE_POST'
 export const SELECT ='SELECT'
 
@@ -46,5 +48,17 @@ export function addComment(comment) {
 export function deleteComment(comment) {
   return dispatch => {
     API.deleteComment(comment).then(comment => dispatch({ type: DELETE_COMMENT, comment }))
+  }
+}
+
+export function editComment(comment) {
+  return dispatch => {
+    API.editComment(comment).then(comment => dispatch({ type: EDIT_COMMENT, comment }))
+  }
+}
+
+export function commentSelected(object) {
+  return dispatch => {
+    dispatch({ type: COMMENT_SELECTED, object })
   }
 }

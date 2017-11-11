@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchComments, deleteComment } from './../../actions'
+import { fetchComments, deleteComment, editComment, commentSelected } from './../../actions'
 import Form from './form'
 
 import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
 
 class Comment extends Component {
-  
+
   componentDidMount() {
     const { postId, fetchComments } = this.props
     fetchComments(postId)
@@ -16,6 +16,12 @@ class Comment extends Component {
   delete = (id) => {
     const { deleteComment } = this.props
     deleteComment(id)
+  }
+
+  edit = (comment) => {
+    const { commentSelected } = this.props
+
+    commentSelected(comment)
   }
 
   comment = () => {
@@ -30,7 +36,7 @@ class Comment extends Component {
             <div className="comment-head"><h5><i className="fa fa-user" aria-hidden="true"></i> {comment.author}</h5></div>
             <div className="comment-content">{comment.body}</div>
             <div className="comment-details">
-              <button className="post-edit btn-icon" title="Comment edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+              <button className="post-edit btn-icon" title="Comment edit" onClick={() => this.edit(comment)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
               <button className="post-delete btn-icon" title="Comment delete" onClick={() => this.delete(comment.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
             </div>
           </li>
@@ -40,7 +46,7 @@ class Comment extends Component {
   }
 
   render() {
-
+    console.log(this.props)
     const { postId } = this.props
 
     return (
@@ -68,7 +74,9 @@ function mapStateToProps({ comments }) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchComments: (id) => dispatch(fetchComments(id)),
-    deleteComment: (id) => dispatch(deleteComment(id))
+    deleteComment: (id) => dispatch(deleteComment(id)),
+    editComment: (id) => dispatch(editComment(id)),
+    commentSelected: (comment) => dispatch(commentSelected(comment))
   }
 }
 

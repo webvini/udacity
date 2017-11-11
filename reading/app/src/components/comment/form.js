@@ -6,6 +6,7 @@ import { addComment } from './../../actions'
 class Form extends Component {
 
   state = {
+    id: '',
     name: '',
     comment: ''
   }
@@ -25,7 +26,7 @@ class Form extends Component {
     const { addComment, postId } = this.props
 
     const comment = {
-      id: uuid().split("-").join(""),
+      id: this.state.id || uuid().split("-").join(""),
       timestamp: Date.now(),
       body: this.state.comment,
       author: this.state.name,
@@ -45,17 +46,26 @@ class Form extends Component {
 
   render() {
 
+    const { selected } = this.props.comments
+    let name = this.state.name
+    let comment = this.state.comment
+    
+    if( selected ) {
+      name = selected.author
+      comment = selected.body
+    }
+
     return (
       <div className="form-wrapper">
         <form onSubmit={this.handleSubmit}>
           <label>
             <span>Name</span>
-            <input type="text" name="name" onChange={this.handleInputChange} value={this.state.name} />
+            <input type="text" name="name" onChange={this.handleInputChange} value={name} />
           </label>
 
           <label>
             <span>Make a comment</span>
-            <textarea name="comment" onChange={this.handleInputChange} value={this.state.comment}></textarea>
+            <textarea name="comment" onChange={this.handleInputChange} value={comment}></textarea>
           </label>
 
           <button type="submit" className="btn">Send</button>
@@ -73,7 +83,7 @@ function mapStateToProps({ comments }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addComment: (comment) => dispatch(addComment(comment)),
+    addComment: (comment) => dispatch(addComment(comment))
   }
 }
 
