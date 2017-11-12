@@ -7,8 +7,17 @@ class Form extends Component {
 
   state = {
     id: '',
-    name: '',
-    comment: ''
+    author: '',
+    body: ''
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { selected } = nextProps.comments
+
+    this.setState({
+      author: (selected) ? selected.author : '',
+      body: (selected) ? selected.body : ''
+    })
   }
 
   handleInputChange = (el) => {
@@ -39,33 +48,24 @@ class Form extends Component {
 
   onEmpty = () => {
     this.setState({
-      name: '',
-      comment: ''
+      author: '',
+      body: ''
     })
   }
 
   render() {
-
-    const { selected } = this.props.comments
-    let name = this.state.name
-    let comment = this.state.comment
-    
-    if( selected ) {
-      name = selected.author
-      comment = selected.body
-    }
 
     return (
       <div className="form-wrapper">
         <form onSubmit={this.handleSubmit}>
           <label>
             <span>Name</span>
-            <input type="text" name="name" onChange={this.handleInputChange} value={name} />
+            <input type="text" name="author" onChange={this.handleInputChange} value={this.state.author} />
           </label>
 
           <label>
             <span>Make a comment</span>
-            <textarea name="comment" onChange={this.handleInputChange} value={comment}></textarea>
+            <textarea name="body" onChange={this.handleInputChange} value={this.state.body}></textarea>
           </label>
 
           <button type="submit" className="btn">Send</button>
