@@ -13,10 +13,14 @@ class Form extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { selected } = nextProps.comments
+    let { selected } = nextProps.comments
+
+    if( selected ) {
+      selected = (this.state.id === selected.id) ? undefined : selected
+    }
 
     this.setState({
-      edit: true,
+      edit: (selected) ? true : false,
       id: (selected) ? selected.id : '',
       author: (selected) ? selected.author : '',
       body: (selected) ? selected.body : ''
@@ -50,14 +54,6 @@ class Form extends Component {
     }else{
       addComment(comment)
     }
-    this.onEmpty()
-  }
-
-  onEmpty = () => {
-    this.setState({
-      author: '',
-      body: ''
-    })
   }
 
   render() {
