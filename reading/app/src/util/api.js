@@ -29,6 +29,6 @@ export const deleteComment = (comment) =>
     .catch(error => error)
 
 export const editComment = (comment) =>
-  fetch(`${api}/comments/${comment}`, { method: 'PUT', headers, body: JSON.stringify(comment) })
+  fetch(`${api}/comments/${comment.id}`, { method: 'PUT', headers, body: JSON.stringify(comment) })
     .then(res => res.json())
     .catch(error => error)

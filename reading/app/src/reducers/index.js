@@ -44,7 +44,9 @@ const comments = (state = {}, action) => {
     case EDIT_COMMENT:
       return {
         ...state,
-        allComments: action.comments
+        allComments: state.allComments
+          .filter(c => c.id !== comment.id)
+          .concat([comment])
       }
     case COMMENT_SELECTED:
       return {

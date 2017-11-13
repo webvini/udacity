@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchComments, deleteComment, editComment, commentSelected } from './../../actions'
+import { fetchComments, deleteComment, commentSelected } from './../../actions'
 import Form from './form'
 
 import './style.css'
@@ -46,7 +46,6 @@ class Comment extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { postId } = this.props
 
     return (
@@ -75,7 +74,6 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchComments: (id) => dispatch(fetchComments(id)),
     deleteComment: (id) => dispatch(deleteComment(id)),
-    editComment: (id) => dispatch(editComment(id)),
     commentSelected: (comment) => dispatch(commentSelected(comment))
   }
 }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import { addComment } from './../../actions'
+import { addComment, editComment } from './../../actions'
 
 class Form extends Component {
 
   state = {
+    edit: false,
     id: '',
     author: '',
     body: ''
@@ -15,6 +16,8 @@ class Form extends Component {
     const { selected } = nextProps.comments
 
     this.setState({
+      edit: true,
+      id: (selected) ? selected.id : '',
       author: (selected) ? selected.author : '',
       body: (selected) ? selected.body : ''
     })
@@ -32,17 +35,21 @@ class Form extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { addComment, postId } = this.props
+    const { addComment, editComment, postId } = this.props
 
     const comment = {
-      id: this.state.id || uuid().split("-").join(""),
+      id: (this.state.edit) ? this.state.id : uuid().split("-").join(""),
       timestamp: Date.now(),
-      body: this.state.comment,
-      author: this.state.name,
+      body: this.state.body,
+      author: this.state.author,
       parentId: postId,
     }
 
-    addComment(comment)
+    if( this.state.edit ) {
+      editComment(comment)
+    }else{
+      addComment(comment)
+    }
     this.onEmpty()
   }
 
@@ -83,7 +90,8 @@ function mapStateToProps({ comments }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addComment: (comment) => dispatch(addComment(comment))
+    addComment: (comment) => dispatch(addComment(comment)),
+    editComment: (id) => dispatch(editComment(id))
   }
 }
 
