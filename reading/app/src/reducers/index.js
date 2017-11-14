@@ -8,7 +8,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   EDIT_COMMENT,
-  COMMENT_SELECTED } from '../actions'
+  COMMENT_SELECTED,
+  DOWN_VOTE_COMMENT } from '../actions'
 
 const posts = (state = {}, action) => {
   switch (action.type) {
@@ -52,6 +53,17 @@ const comments = (state = {}, action) => {
       return {
         ...state,
         selected: action.object
+      }
+    case DOWN_VOTE_COMMENT:
+      return {
+        ...state,
+        allComments: state.allComments.map(c => {
+          if( c.id === comment.id ) {
+            c.voteScore = comment.voteScore
+          }
+          return c
+        })
+          
       }
     default:
       return { ...state }

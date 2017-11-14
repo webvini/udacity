@@ -48,7 +48,7 @@
 
 .footer-details {
   padding: 5px 15px;
-  background-color: #545454;
+  background-color: #000;
 }
 
 .footer-details ul {
@@ -72,6 +72,15 @@
 
 .footer-details ul li i {
   margin-right: 3px;
+  cursor: pointer;
+}
+
+.footer-details ul:last-child li:first-child:hover i {
+  color: #b94144;
+}
+
+.footer-details ul:last-child li:last-child:hover i {
+  color: #4155b9;
 }
 
 .btn-details {

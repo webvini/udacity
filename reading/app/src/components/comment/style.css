@@ -46,3 +46,8 @@
   background-color: #ccc;
   cursor: default;
 }
+
+.comment-details .right {
+  float: right;
+  padding-right: 10px;
+}

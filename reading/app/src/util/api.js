@@ -32,3 +32,8 @@ export const editComment = (comment) =>
   fetch(`${api}/comments/${comment.id}`, { method: 'PUT', headers, body: JSON.stringify(comment) })
     .then(res => res.json())
     .catch(error => error)
+
+export const downVoteComment = (commentID) =>
+  fetch(`${api}/comments/${commentID}`, { method: 'POST', headers, body: JSON.stringify({option: 'downVote'}) })
+    .then(res => res.json())
+    .catch(error => error)
