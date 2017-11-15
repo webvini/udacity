@@ -23,6 +23,11 @@ export const downVotePost = (postID) =>
     .then(res => res.json())
     .catch(error => error)
 
+export const upVotePost = (postID) =>
+  fetch(`${api}/posts/${postID}`, { method: 'POST', headers, body: JSON.stringify({option: 'upVote'}) })
+    .then(res => res.json())
+    .catch(error => error)
+
 export const setComment = (comment) =>
   fetch(`${api}/comments/`, { method: 'POST', headers, body: JSON.stringify(comment) })
     .then(res => res.json())

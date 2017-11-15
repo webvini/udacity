@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Comment from './../comment/index'
 import { connect } from 'react-redux'
 import * as moment from "moment";
-import { setSelected, downVotePost } from './../../actions'
+import { setSelected, downVotePost,upVotePost } from './../../actions'
 
 import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
@@ -33,6 +33,12 @@ class Post extends Component {
     const { downVotePost } = this.props
 
     downVotePost(id)
+  }
+
+  upVote = (id) => {
+    const { upVotePost } = this.props
+
+    upVotePost(id)
   }
   
   render() {
@@ -65,7 +71,7 @@ class Post extends Component {
           <ul>
             <li>({post.voteScore})</li>
             <li onClick={() => this.downVote(post.id)}><i className="fa fa-thumbs-down" aria-hidden="true"></i></li>
-            <li><i className="fa fa-thumbs-up" aria-hidden="true"></i></li>
+            <li onClick={() => this.upVote(post.id)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></li>
           </ul>
         </div>
 
@@ -94,6 +100,7 @@ function mapDispatchToProps(dispatch) {
   return {
     setSelected: (target, object) => dispatch(setSelected(target, object)),
     downVotePost: (id) => dispatch(downVotePost(id)),
+    upVotePost: (id) => dispatch(upVotePost(id))
   }
 }
 

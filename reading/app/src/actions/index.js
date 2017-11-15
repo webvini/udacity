@@ -5,6 +5,7 @@ export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DOWN_VOTE_POST = 'DOWN_VOTE_POST'
+export const UP_VOTE_POST = 'UP_VOTE_POST'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const COMMENT_SELECTED = 'COMMENT_SELECTED'
@@ -51,6 +52,12 @@ export function addComment(comment) {
 export function downVotePost(postID) {
   return dispatch => {
     API.downVotePost(postID).then(post => dispatch({ type: DOWN_VOTE_POST, post }))
+  }
+}
+
+export function upVotePost(postID) {
+  return dispatch => {
+    API.upVotePost(postID).then(post => dispatch({ type: UP_VOTE_POST, post }))
   }
 }
 

@@ -7,6 +7,7 @@ import {
   RECEIVE_COMMENT,
   ADD_COMMENT,
   DOWN_VOTE_POST,
+  UP_VOTE_POST,
   DELETE_COMMENT,
   EDIT_COMMENT,
   COMMENT_SELECTED,
@@ -23,6 +24,16 @@ const posts = (state = {}, action) => {
         allPosts: action.posts
       }
     case DOWN_VOTE_POST:
+      return {
+        ...state,
+        allPosts: state.allPosts.map(p => {
+          if( p.id === post.id ) {
+            p.voteScore = post.voteScore
+          }
+          return p
+        })
+      }
+    case UP_VOTE_POST:
       return {
         ...state,
         allPosts: state.allPosts.map(p => {
