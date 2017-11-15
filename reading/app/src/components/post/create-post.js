@@ -1,18 +1,45 @@
 import React, { Component } from 'react'
+import uuid from 'uuid'
 import { connect } from 'react-redux'
-import { fetchCategories } from '../../actions'
+import { fetchCategories, addPost } from '../../actions'
 
 class CreatePost extends Component {
+
+  state = {
+    id: '',
+    title: '',
+    author: '',
+    category: '',
+    body: ''
+  }
 
   componentDidMount() {
     this.props.fetchCategories()
   }
 
+  handleInputChange = (el) => {
+    const value = el.target.value
+    const name = el.target.name
+
+    this.setState({
+      [name]: value
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { createPost } = this.props
+    const { createPost, addPost } = this.props
+    const post = {
+      id: (this.state.edit) ? this.state.id : uuid().split("-").join(""),
+      timestamp: Date.now(),
+      title: this.state.title,
+      author: this.state.author,
+      category: this.state.category,
+      body: this.state.body
+    }
 
+    addPost(post)
     createPost(false)
   }
 
@@ -22,7 +49,7 @@ class CreatePost extends Component {
 
       return (
         categories.map(category => (
-          <option key={category.name} value={category.name}>{category.name}</option>
+          <option key={category.name} defaultValue={category.name}>{category.name}</option>
         ))
       )
     }
@@ -36,24 +63,24 @@ class CreatePost extends Component {
         <form className="form-wrapper" onSubmit={this.handleSubmit}>
           <label>
             <span>Title</span>
-            <input type="text" name="title" />
+            <input type="text" name="title" onChange={this.handleInputChange} />
           </label>
 
           <label>
             <span>Author</span>
-            <input type="text" name="author" />
+            <input type="text" name="author" onChange={this.handleInputChange} />
           </label>
 
           <label>
             <span>Category</span>
-            <select>
+            <select name="category" onChange={this.handleInputChange}>
               {this.categories()}
             </select>
           </label>
 
           <label>
             <span>Body</span>
-            <textarea name="body"></textarea>
+            <textarea name="body" onChange={this.handleInputChange}></textarea>
           </label>
 
           <button type="submit" className="btn">Send</button>
@@ -71,7 +98,8 @@ function mapStateToProps({ categories }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
+    addPost: (post) => dispatch(addPost(post))
   }
 }
 
