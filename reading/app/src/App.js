@@ -62,7 +62,7 @@ class App extends Component {
     return (
       <div className="app-wrapper">
         <header className="main-header">
-          <h1>Reading</h1>
+          <h1><a href="../">Reading</a></h1>
         </header>
         
         <section className="main-container">
