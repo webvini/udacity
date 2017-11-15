@@ -28,7 +28,6 @@
   padding: 50px 0;
 }
 
-.view-create-post,
 .container-inner {
   width: 85%;
   margin: 0 auto;
@@ -37,4 +36,14 @@
 
 .main-container-create-post {
   background: #fff;
+}
+
+.create-post-wrapper {
+  width: 85%;
+  margin: 0 auto;
+  padding: 10px 0
+}
+
+.create-post-wrapper h2 {
+  margin-bottom: 20px;
 }

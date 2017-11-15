@@ -19,34 +19,6 @@
   margin: 10px 0;
 }
 
-.form-wrapper label {
-  display: block;
-  margin-bottom: 15px;
-}
-
-.form-wrapper label span {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.form-wrapper input {
-  width: 45%;
-  height: 30px;
-  padding: 0 10px;
-}
-
-.form-wrapper textarea {
-  width: 96%;
-  padding: 2%;
-  font-size: 14px;
-}
-
-.form-wrapper .btn:disabled {
-  background-color: #ccc;
-  cursor: default;
-}
-
 .comment-details .right {
   float: right;
   padding-right: 10px;
