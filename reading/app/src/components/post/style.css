@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 
-.footer-details ul:last-child li:first-child:hover i {
+.footer-details ul:last-child li:hover i {
   color: #b94144;
 }
 

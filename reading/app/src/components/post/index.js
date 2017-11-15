@@ -57,8 +57,9 @@ class Post extends Component {
             <li><i className="fa fa-comments" aria-hidden="true"></i> {post.commentCount}</li>
           </ul>
           <ul>
-            <li><i className="fa fa-thumbs-down" aria-hidden="true"></i> (8)</li>
-            <li><i className="fa fa-thumbs-up" aria-hidden="true"></i> (12)</li>
+            <li>({post.voteScore})</li>
+            <li><i className="fa fa-thumbs-down" aria-hidden="true"></i></li>
+            <li><i className="fa fa-thumbs-up" aria-hidden="true"></i></li>
           </ul>
         </div>
 
