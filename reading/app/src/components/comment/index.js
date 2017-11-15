@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchComments, deleteComment, commentSelected, downVoteComment } from './../../actions'
+import { fetchComments, deleteComment, commentSelected, downVoteComment, upVoteComment } from './../../actions'
 import Form from './form'
 
 import './style.css'
@@ -30,6 +30,12 @@ class Comment extends Component {
     downVoteComment(id)
   }
 
+  upVote = (id) => {
+    const { upVoteComment } = this.props
+
+    upVoteComment(id)
+  }
+
   comment = () => {
     if( this.props.comments.allComments ) {
       const { allComments } = this.props.comments
@@ -44,8 +50,9 @@ class Comment extends Component {
               <button className="post-delete btn-icon" title="Comment delete" onClick={() => this.delete(comment.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
 
               <div className="right">
+                <span>(200)</span>
                 <button className="btn-icon" title="Down Vote" onClick={() => this.downVote(comment.id)}><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>
-                <button className="btn-icon" title="Down Vote" onClick={() => this.downVote(comment.id)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                <button className="btn-icon" title="Up Vote" onClick={() => this.upVote(comment.id)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>
               </div>
             </div>
           </li>
@@ -84,7 +91,8 @@ function mapDispatchToProps(dispatch) {
     fetchComments: (id) => dispatch(fetchComments(id)),
     deleteComment: (id) => dispatch(deleteComment(id)),
     commentSelected: (comment) => dispatch(commentSelected(comment)),
-    downVoteComment: (id) => dispatch(downVoteComment(id))
+    downVoteComment: (id) => dispatch(downVoteComment(id)),
+    upVoteComment: (id) => dispatch(upVoteComment(id))
   }
 }
 

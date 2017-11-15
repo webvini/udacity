@@ -37,3 +37,8 @@ export const downVoteComment = (commentID) =>
   fetch(`${api}/comments/${commentID}`, { method: 'POST', headers, body: JSON.stringify({option: 'downVote'}) })
     .then(res => res.json())
     .catch(error => error)
+
+export const upVoteComment = (commentID) =>
+  fetch(`${api}/comments/${commentID}`, { method: 'POST', headers, body: JSON.stringify({option: 'upVote'}) })
+    .then(res => res.json())
+    .catch(error => error)

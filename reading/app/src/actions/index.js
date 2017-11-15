@@ -8,6 +8,7 @@ export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const COMMENT_SELECTED = 'COMMENT_SELECTED'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
+export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
 export const REMOVE_POST = 'REMOVE_POST'
 export const SELECT ='SELECT'
 
@@ -67,5 +68,11 @@ export function commentSelected(object) {
 export function downVoteComment(commentID) {
   return dispatch => {
     API.downVoteComment(commentID).then(comment => dispatch({ type: DOWN_VOTE_COMMENT, comment }))
+  }
+}
+
+export function upVoteComment(commentID) {
+  return dispatch => {
+    API.upVoteComment(commentID).then(comment => dispatch({ type: UP_VOTE_COMMENT, comment }))
   }
 }
