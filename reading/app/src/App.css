@@ -4,6 +4,7 @@
   color: white;
   text-align: center;
   line-height: 70px;
+  position: relative;
 }
 
 .main-header h1 {
@@ -14,12 +15,26 @@
   color: #fff;
 }
 
+.main-header button {
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .main-container {
   padding: 50px 0;
 }
 
+.view-create-post,
 .container-inner {
   width: 85%;
   margin: 0 auto;
   padding: 10px 0;
+}
+
+.main-container-create-post {
+  background: #fff;
 }

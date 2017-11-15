@@ -5,14 +5,25 @@ import './App.css'
 
 import Post from './components/post/index'
 import Category from './components/category/index'
+import CreatePost from './components/post/create-post'
 
 class App extends Component {
+
+  state = {
+    isCreatePost: false
+  }
 
   componentDidMount() {
     this.props.fetchPosts()
     this.props.fetchCategories()
   }
 
+  createPost = (value) => {
+    this.setState({
+      isCreatePost: value
+    })
+  }
+  
   post = (selectedPost) => {
     if( this.props.posts.allPosts ) {
       const { allPosts } = this.props.posts
@@ -63,8 +74,17 @@ class App extends Component {
       <div className="app-wrapper">
         <header className="main-header">
           <h1><a href="../">Reading</a></h1>
+          <button onClick={() => this.createPost(true)}>Create Post</button>
         </header>
         
+        <section className="main-container-create-post">
+          <div className="view-create-post">
+            { this.state.isCreatePost &&
+              <CreatePost createPost={this.createPost} />
+            }
+          </div>
+        </section>
+
         <section className="main-container">
           <div className="container-inner">
             
