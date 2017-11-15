@@ -50,7 +50,7 @@ class Comment extends Component {
               <button className="post-delete btn-icon" title="Comment delete" onClick={() => this.delete(comment.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
 
               <div className="right">
-                <span>(200)</span>
+                <span>({comment.voteScore})</span>
                 <button className="btn-icon" title="Down Vote" onClick={() => this.downVote(comment.id)}><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>
                 <button className="btn-icon" title="Up Vote" onClick={() => this.upVote(comment.id)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>
               </div>
