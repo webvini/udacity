@@ -17,6 +17,19 @@ class CreatePost extends Component {
     this.props.fetchCategories()
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { post } = nextProps
+    console.log(post)
+    this.setState({
+      id: (post) ? post.id : '',
+      timestamp: Date.now(),
+      title: (post) ? post.title : '',
+      author: (post) ? post.author : '',
+      category: (post) ? post.category : '',
+      body: (post) ? post.body : ''
+    })
+  }
+
   handleInputChange = (el) => {
     const value = el.target.value
     const name = el.target.name
@@ -30,7 +43,7 @@ class CreatePost extends Component {
     e.preventDefault()
 
     const { createPost, addPost } = this.props
-    const post = {
+    const newPost = {
       id: (this.state.edit) ? this.state.id : uuid().split("-").join(""),
       timestamp: Date.now(),
       title: this.state.title,
@@ -39,7 +52,7 @@ class CreatePost extends Component {
       body: this.state.body
     }
 
-    addPost(post)
+    addPost(newPost)
     createPost(false)
   }
 
@@ -49,13 +62,15 @@ class CreatePost extends Component {
 
       return (
         categories.map(category => (
-          <option key={category.name} defaultValue={category.name}>{category.name}</option>
+          <option key={category.name} value={category.name}>{category.name}</option>
         ))
       )
     }
   }
 
   render() {
+    const { post } = this.props
+
     return (
       <div className="create-post-wrapper">
         <h2>Create new post</h2>
@@ -63,24 +78,24 @@ class CreatePost extends Component {
         <form className="form-wrapper" onSubmit={this.handleSubmit}>
           <label>
             <span>Title</span>
-            <input type="text" name="title" onChange={this.handleInputChange} />
+            <input type="text" name="title" onChange={this.handleInputChange} value={this.state.title} />
           </label>
 
           <label>
             <span>Author</span>
-            <input type="text" name="author" onChange={this.handleInputChange} />
+            <input type="text" name="author" onChange={this.handleInputChange} value={this.state.author} />
           </label>
 
           <label>
             <span>Category</span>
-            <select name="category" onChange={this.handleInputChange}>
+            <select name="category" defaultValue={(post) ? post.category : this.state.category } onChange={this.handleInputChange}>
               {this.categories()}
             </select>
           </label>
 
           <label>
             <span>Body</span>
-            <textarea name="body" onChange={this.handleInputChange}></textarea>
+            <textarea name="body" onChange={this.handleInputChange} value={this.state.body}></textarea>
           </label>
 
           <button type="submit" className="btn">Send</button>

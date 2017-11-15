@@ -10,7 +10,8 @@ import CreatePost from './components/post/create-post'
 class App extends Component {
 
   state = {
-    isCreatePost: false
+    isCreatePost: false,
+    post: {}
   }
 
   componentDidMount() {
@@ -18,9 +19,10 @@ class App extends Component {
     this.props.fetchCategories()
   }
 
-  createPost = (value) => {
+  createPost = (value, post) => {
     this.setState({
-      isCreatePost: value
+      isCreatePost: value,
+      post
     })
   }
   
@@ -49,7 +51,7 @@ class App extends Component {
         allPosts
           .filter(post => post.category === selected.category || selected.category === undefined || selected.category === 'all')
           .map(post => (
-            <Post key={post.id} post={post} history={history} />
+            <Post key={post.id} post={post} history={history} createPost={this.createPost} />
         ))
       )
     }
@@ -80,7 +82,7 @@ class App extends Component {
         <section className="main-container-create-post">
           <div className="view-create-post">
             { this.state.isCreatePost && 
-              <CreatePost createPost={this.createPost} />
+              <CreatePost createPost={this.createPost} post={this.state.post} />
             }
           </div>
         </section>

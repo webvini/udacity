@@ -41,6 +41,12 @@ class Post extends Component {
     upVotePost(id)
   }
   
+  editPost = (post) => {
+    const { createPost } = this.props
+
+    createPost(true, post)
+  }
+
   render() {
 
     const { post, details } = this.props
@@ -48,7 +54,7 @@ class Post extends Component {
     return (
       <div className="post-wrapper">
         <div className="post-buttons-control">
-          <button className="post-edit btn-icon" title="Post edit"><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button className="post-edit btn-icon" title="Post edit" onClick={() => this.editPost(post)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
           <button className="post-delete btn-icon" title="Post delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
         </div>
 
