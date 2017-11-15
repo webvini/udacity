@@ -18,6 +18,11 @@ export const getAllComments = (id) =>
   fetch(`${api}/posts/${id}/comments`, { method: 'GET', headers })
     .then(res => res.json())
 
+export const downVotePost = (postID) =>
+  fetch(`${api}/posts/${postID}`, { method: 'POST', headers, body: JSON.stringify({option: 'downVote'}) })
+    .then(res => res.json())
+    .catch(error => error)
+
 export const setComment = (comment) =>
   fetch(`${api}/comments/`, { method: 'POST', headers, body: JSON.stringify(comment) })
     .then(res => res.json())

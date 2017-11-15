@@ -6,6 +6,7 @@ import {
   SELECT,
   RECEIVE_COMMENT,
   ADD_COMMENT,
+  DOWN_VOTE_POST,
   DELETE_COMMENT,
   EDIT_COMMENT,
   COMMENT_SELECTED,
@@ -13,11 +14,23 @@ import {
   UP_VOTE_COMMENT } from '../actions'
 
 const posts = (state = {}, action) => {
+  const { post } = action
+
   switch (action.type) {
     case RECEIVE_POSTS:
       return {
         ...state,
         allPosts: action.posts
+      }
+    case DOWN_VOTE_POST:
+      return {
+        ...state,
+        allPosts: state.allPosts.map(p => {
+          if( p.id === post.id ) {
+            p.voteScore = post.voteScore
+          }
+          return p
+        })
       }
     default:
       return { ...state }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Comment from './../comment/index'
 import { connect } from 'react-redux'
 import * as moment from "moment";
-import { setSelected } from './../../actions'
+import { setSelected, downVotePost } from './../../actions'
 
 import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
@@ -29,6 +29,12 @@ class Post extends Component {
     this.props.history.push(`/${post.category}/${post.id}`)
   }
 
+  downVote = (id) => {
+    const { downVotePost } = this.props
+
+    downVotePost(id)
+  }
+  
   render() {
 
     const { post, details } = this.props
@@ -58,13 +64,13 @@ class Post extends Component {
           </ul>
           <ul>
             <li>({post.voteScore})</li>
-            <li><i className="fa fa-thumbs-down" aria-hidden="true"></i></li>
+            <li onClick={() => this.downVote(post.id)}><i className="fa fa-thumbs-down" aria-hidden="true"></i></li>
             <li><i className="fa fa-thumbs-up" aria-hidden="true"></i></li>
           </ul>
         </div>
 
         { !details &&
-          <button className="btn btn-details" onClick={() => this.onDetails(post)}><i className="fa fa-plus" aria-hidden="true"></i> Details</button>
+          <button className="btn btn-details"   onClick={() => this.onDetails(post)}><i className="fa fa-plus" aria-hidden="true"></i> Details</button>
         }
 
         { details &&
@@ -86,7 +92,8 @@ function mapStateToProps({ selected }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setSelected: (target, object) => dispatch(setSelected(target, object))
+    setSelected: (target, object) => dispatch(setSelected(target, object)),
+    downVotePost: (id) => dispatch(downVotePost(id)),
   }
 }
 

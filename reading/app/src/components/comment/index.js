@@ -39,7 +39,7 @@ class Comment extends Component {
   comment = () => {
     if( this.props.comments.allComments ) {
       const { allComments } = this.props.comments
-      console.log(allComments)
+
       return (
         allComments.map(comment => (
           <li key={comment.id} className="comment">
