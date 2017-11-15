@@ -79,7 +79,7 @@ class App extends Component {
         
         <section className="main-container-create-post">
           <div className="view-create-post">
-            { this.state.isCreatePost &&
+            { this.state.isCreatePost && 
               <CreatePost createPost={this.createPost} />
             }
           </div>

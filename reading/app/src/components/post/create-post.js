@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchCategories } from '../../actions'
 
 class CreatePost extends Component {
+
+  componentDidMount() {
+    this.props.fetchCategories()
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -8,6 +14,18 @@ class CreatePost extends Component {
     const { createPost } = this.props
 
     createPost(false)
+  }
+
+  categories = () => {
+    if( this.props.categories.allCategories ) {
+      const { categories } = this.props.categories.allCategories
+
+      return (
+        categories.map(category => (
+          <option key={category.name} value={category.name}>{category.name}</option>
+        ))
+      )
+    }
   }
 
   render() {
@@ -29,7 +47,7 @@ class CreatePost extends Component {
           <label>
             <span>Category</span>
             <select>
-              <option>React</option>
+              {this.categories()}
             </select>
           </label>
 
@@ -45,4 +63,19 @@ class CreatePost extends Component {
   }
 }
 
-export default CreatePost
+function mapStateToProps({ categories }) {
+  return {
+    categories
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchCategories: () => dispatch(fetchCategories())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreatePost)
