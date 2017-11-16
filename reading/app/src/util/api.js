@@ -15,6 +15,11 @@ export const setPost = (post) =>
     .then(res => res.json())
     .catch(error => error)
 
+export const editPost = (post) =>
+  fetch(`${api}/posts/${post.id}`, { method: 'PUT', headers, body: JSON.stringify(post) })
+    .then(res => res.json())
+    .catch(error => error)
+
 export const getAllCategories = () =>
   fetch(`${api}/categories`, { headers })
     .then(res => res.json())

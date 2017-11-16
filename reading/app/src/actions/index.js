@@ -2,6 +2,7 @@ import * as API from '../util/api'
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
+export const EDIT_POST = 'EDIT_POST'
 export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
@@ -29,6 +30,12 @@ export function fetchPosts() {
 export const addPost = (post) => {
   return dispatch => {
     API.setPost(post).then(post => dispatch({ type: ADD_POST, post }))
+  }
+}
+
+export const editPost = (post) => {
+  return dispatch => {
+    API.editPost(post).then(post => dispatch({ type: EDIT_POST, post }))
   }
 }
 

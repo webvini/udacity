@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import {
   RECEIVE_POSTS,
   ADD_POST,
+  EDIT_POST,
   RECEIVE_CATEGORY,
   SELECT,
   RECEIVE_COMMENT,
@@ -28,6 +29,13 @@ const posts = (state = {}, action) => {
       return {
         ...state,
         allPosts: state.allPosts.concat([post])
+      }
+    case EDIT_POST:
+      return {
+        ...state,
+        allPosts: state.allPosts
+          .filter(p => p.id !== post.id)
+          .concat([post])
       }
     case DOWN_VOTE_POST:
       return {

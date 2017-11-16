@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
-import { fetchCategories, addPost } from '../../actions'
+import { fetchCategories, addPost, editPost } from '../../actions'
 
 class CreatePost extends Component {
 
   state = {
+    edit: false,
     id: '',
     title: '',
     author: '',
@@ -19,8 +20,9 @@ class CreatePost extends Component {
 
   componentWillReceiveProps(nextProps) {
     let { post } = nextProps
-    console.log(post)
+
     this.setState({
+      edit: (post) ? true : false,
       id: (post) ? post.id : '',
       timestamp: Date.now(),
       title: (post) ? post.title : '',
@@ -42,7 +44,7 @@ class CreatePost extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { createPost, addPost } = this.props
+    const { createPost, addPost, editPost } = this.props
     const newPost = {
       id: (this.state.edit) ? this.state.id : uuid().split("-").join(""),
       timestamp: Date.now(),
@@ -52,7 +54,12 @@ class CreatePost extends Component {
       body: this.state.body
     }
 
-    addPost(newPost)
+    if(this.state.id) {
+      editPost(newPost)
+    }else{
+      addPost(newPost)
+    }
+
     createPost(false)
   }
 
@@ -114,7 +121,8 @@ function mapStateToProps({ categories }) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    addPost: (post) => dispatch(addPost(post))
+    addPost: (post) => dispatch(addPost(post)),
+    editPost: (post) => dispatch(editPost(post))
   }
 }
 
