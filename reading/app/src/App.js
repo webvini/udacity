@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
 
-    const { selected, history } = this.props
+    const { selected } = this.props
 
     return (
       <div className="app-wrapper">

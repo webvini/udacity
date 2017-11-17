@@ -4,6 +4,7 @@ import {
   RECEIVE_POSTS,
   ADD_POST,
   EDIT_POST,
+  DELETE_POST,
   RECEIVE_CATEGORY,
   SELECT,
   RECEIVE_COMMENT,
@@ -36,6 +37,11 @@ const posts = (state = {}, action) => {
         allPosts: state.allPosts
           .filter(p => p.id !== post.id)
           .concat([post])
+      }
+    case DELETE_POST:
+      return {
+        ...state,
+        allPosts: state.allPosts.filter(p => p.id !== post.id)
       }
     case DOWN_VOTE_POST:
       return {

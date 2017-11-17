@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Comment from './../comment/index'
 import { connect } from 'react-redux'
 import * as moment from "moment";
-import { setSelected, downVotePost,upVotePost } from './../../actions'
+import { setSelected, downVotePost, upVotePost, deletePost } from './../../actions'
 
 import './style.css'
 import 'font-awesome/css/font-awesome.min.css';
@@ -47,6 +47,12 @@ class Post extends Component {
     createPost(true, post)
   }
 
+  delete = (id) => {
+    const { deletePost } = this.props
+
+    deletePost(id)
+  }
+
   render() {
 
     const { post, details } = this.props
@@ -55,7 +61,7 @@ class Post extends Component {
       <div className="post-wrapper">
         <div className="post-buttons-control">
           <button className="post-edit btn-icon" title="Post edit" onClick={() => this.editPost(post)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-          <button className="post-delete btn-icon" title="Post delete"><i className="fa fa-trash" aria-hidden="true"></i></button>
+          <button className="post-delete btn-icon" title="Post delete" onClick={() => this.delete(post.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
         </div>
 
         <div className="post-head">
@@ -106,7 +112,8 @@ function mapDispatchToProps(dispatch) {
   return {
     setSelected: (target, object) => dispatch(setSelected(target, object)),
     downVotePost: (id) => dispatch(downVotePost(id)),
-    upVotePost: (id) => dispatch(upVotePost(id))
+    upVotePost: (id) => dispatch(upVotePost(id)),
+    deletePost: (id) => dispatch(deletePost(id))
   }
 }
 

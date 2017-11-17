@@ -3,6 +3,7 @@ import * as API from '../util/api'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
 export const EDIT_POST = 'EDIT_POST'
+export const DELETE_POST = 'DELETE_POST'
 export const RECEIVE_CATEGORY = 'RECEIVE_CATEGORY'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const ADD_COMMENT = 'ADD_COMMENT'
@@ -13,13 +14,7 @@ export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const COMMENT_SELECTED = 'COMMENT_SELECTED'
 export const DOWN_VOTE_COMMENT = 'DOWN_VOTE_COMMENT'
 export const UP_VOTE_COMMENT = 'UP_VOTE_COMMENT'
-export const REMOVE_POST = 'REMOVE_POST'
 export const SELECT ='SELECT'
-
-export const removePost = (post) => ({
-  type: REMOVE_POST,
-  post
-})
 
 export function fetchPosts() {
   return dispatch => {
@@ -36,6 +31,12 @@ export const addPost = (post) => {
 export const editPost = (post) => {
   return dispatch => {
     API.editPost(post).then(post => dispatch({ type: EDIT_POST, post }))
+  }
+}
+
+export const deletePost = (id) => {
+  return dispatch => {
+    API.deletePost(id).then(post => dispatch({ type: DELETE_POST, post }))
   }
 }
 

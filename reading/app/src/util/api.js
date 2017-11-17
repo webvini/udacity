@@ -20,6 +20,11 @@ export const editPost = (post) =>
     .then(res => res.json())
     .catch(error => error)
 
+export const deletePost = (id) =>
+  fetch(`${api}/posts/${id}`, { method: 'DELETE', headers })
+    .then(res => res.json())
+    .catch(error => error)
+
 export const getAllCategories = () =>
   fetch(`${api}/categories`, { headers })
     .then(res => res.json())
