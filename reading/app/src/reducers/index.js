@@ -5,6 +5,7 @@ import {
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
+  ORDERNATION,
   RECEIVE_CATEGORY,
   SELECT,
   RECEIVE_COMMENT,
@@ -24,7 +25,7 @@ const posts = (state = {}, action) => {
     case RECEIVE_POSTS:
       return {
         ...state,
-        allPosts: action.posts
+        allPosts: action.posts.sort((a, b) => a.timestamp < b.timestamp)
       }
     case ADD_POST:
       return {
@@ -42,6 +43,11 @@ const posts = (state = {}, action) => {
       return {
         ...state,
         allPosts: state.allPosts.filter(p => p.id !== post.id)
+      }
+    case ORDERNATION:
+      return {
+        ...state,
+        allPosts: (action.order) ? state.allPosts.sort((a, b) => a.voteScore < b.voteScore) : state.allPosts.sort((a, b) => a.timestamp < b.timestamp)
       }
     case DOWN_VOTE_POST:
       return {

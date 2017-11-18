@@ -47,3 +47,11 @@
 .create-post-wrapper h2 {
   margin-bottom: 20px;
 }
+
+.view-order {
+  margin-bottom: 20px;
+}
+
+.view-order label, .view-order input {
+  cursor: pointer;
+}

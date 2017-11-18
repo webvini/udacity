@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPosts, fetchCategories } from './actions'
+import { fetchPosts, fetchCategories, ordernation } from './actions'
 import './App.css'
 
 import Post from './components/post/index'
@@ -68,6 +68,12 @@ class App extends Component {
     }
   }
 
+  onOrder = (el) => {
+    const { ordernation } = this.props
+
+    ordernation(el.target.checked)
+  }
+
   render() {
 
     const { selected } = this.props
@@ -90,6 +96,13 @@ class App extends Component {
         <section className="main-container">
           <div className="container-inner">
             
+            <div className="view-order">
+              <label>
+                <span>Do you want order by vote score?</span>
+                <input type="checkbox" onChange={(el) => this.onOrder(el)} />
+              </label>
+            </div>
+
             <div className="view-categories">
               { !selected.post &&
                 this.categories()
@@ -126,7 +139,8 @@ function mapStateToProps({ posts, categories, selected }) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
+    ordernation: (value) => dispatch(ordernation(value))
   }
 }
 
