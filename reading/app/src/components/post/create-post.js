@@ -96,6 +96,7 @@ class CreatePost extends Component {
           <label>
             <span>Category</span>
             <select name="category" defaultValue={(post) ? post.category : this.state.category } onChange={this.handleInputChange}>
+              <option></option>
               {this.categories()}
             </select>
           </label>

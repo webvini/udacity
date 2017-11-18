@@ -97,10 +97,12 @@ class App extends Component {
           <div className="container-inner">
             
             <div className="view-order">
-              <label>
-                <span>Do you want order by vote score?</span>
-                <input type="checkbox" onChange={(el) => this.onOrder(el)} />
-              </label>
+              { !selected.post &&
+                <label>
+                  <span>Do you want order by vote score?</span>
+                  <input type="checkbox" onChange={(el) => this.onOrder(el)} />
+                </label>
+              }
             </div>
 
             <div className="view-categories">
