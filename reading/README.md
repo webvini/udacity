@@ -26,4 +26,4 @@ Automaticamente a url [http://localhost:3000 ](http://localhost:3000) vai abrir 
 
 ### Outras informações
 
-Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server), e o README do [app](https://github.com/webvini/udacity/tree/master/reading/app).
+Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server) para mais detalhes, inclusive dos Endpoints, e o README do [app](https://github.com/webvini/udacity/tree/master/reading/app) que contém uma visão geral de como funciona a estrutura oferecida pelo create-react-app.
