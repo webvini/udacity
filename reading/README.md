@@ -4,7 +4,7 @@ Um aplicativo web de conteúdo e comentários. O aplicativo permitirá que os us
 
 A ideia do projeto é aplicar os conhecimentos adquiridos no módulo de React e Redux.
 
-### Server
+### API Server
 
 Primeiro você precisa dar um start no server, que contém a API.
 
@@ -24,4 +24,4 @@ Automaticamente a url [http://localhost:3000 ](http://localhost:3000) vai abrir 
 
 ### Outras informações
 
-Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server), também, acessar o README do [app](https://github.com/webvini/udacity/tree/master/reading/app) 
+Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server), e o README do [app](https://github.com/webvini/udacity/tree/master/reading/app) 
