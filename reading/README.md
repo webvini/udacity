@@ -12,6 +12,8 @@ Primeiro você precisa dar um start no server, que contém a API.
 - npm install
 - node server
 
+Não feche o terminal.
+
 ### App
 
 Depois, em outro terminal.
@@ -24,4 +26,4 @@ Automaticamente a url [http://localhost:3000 ](http://localhost:3000) vai abrir 
 
 ### Outras informações
 
-Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server), e o README do [app](https://github.com/webvini/udacity/tree/master/reading/app) 
+Você pode acessar o README do [server](https://github.com/webvini/udacity/tree/master/reading/server), e o README do [app](https://github.com/webvini/udacity/tree/master/reading/app).
