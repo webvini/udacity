@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { StackNavigator } from 'react-navigation'
 
 import Deck from './components/deck'
+import CardView from './components/cardView'
 
-export default class App extends React.Component {
+const MainNavigation = StackNavigator({
+  Deck: {
+    screen: Deck,
+    navigationOptions: {
+      title: 'Decks'
+    }
+
+  },
+  CardView: {
+    screen: CardView
+  }
+})
+
+class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Deck />
-        <Deck />
+        <MainNavigation />
       </View>
     );
   }
@@ -21,4 +35,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
-});
+})
+
+export default App
