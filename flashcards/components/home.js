@@ -17,8 +17,17 @@ const MainNavigation = TabNavigator({
     navigationOptions: {
       title: 'New Deck'
     }
+  }},{
+    tabBarPosition: 'top',
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: '#e91e63',
+      labelStyle: {
+        fontSize: 18,
+      },
+    },
   }
-})
+)
 
 class Home extends Component {
   render() {

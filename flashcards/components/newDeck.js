@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native'
 class NewDeck extends Component {
   render() {
     return (
-      <View style={styles.newDeck}>
+      <View style={styles.newDeckWrapper}>
         <Text style={styles.title}>What is the title of your new deck?</Text>
       </View>
     )
