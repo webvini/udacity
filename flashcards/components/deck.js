@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 class Deck extends Component {
   render() {
     return (
       <View style={styles.deckWrapper}>
         <Text style={styles.title}>Javascript</Text>
-        <Text style={styles.description}>0 cards</Text>
+        <Text style={styles.description}>10 card(s)</Text>
       </View>
     )
   }

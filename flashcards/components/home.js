@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { StackNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 
 import Deck from './deck'
-import CardView from './cardView'
+import NewDeck from './newDeck'
 
-const MainNavigation = StackNavigator({
+const MainNavigation = TabNavigator({
   Deck: {
     screen: Deck,
     navigationOptions: {
       title: 'Decks'
     }
-
   },
-  CardView: {
-    screen: CardView
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      title: 'New Deck'
+    }
   }
 })
 
