@@ -2,8 +2,19 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
 
 class NewDeck extends Component {
-  onCreate = () => {
+
+  state = {
+    disabledButton: true
+  }
+
+  nextToStep = () => {
     console.log('ahhaha')
+  }
+
+  onChangedText = title => {
+    this.setState({
+      disabledButton: !title
+    })
   }
 
   render() {
@@ -14,11 +25,13 @@ class NewDeck extends Component {
         <TextInput
           style={styles.input}
           placeholder="Deck title"
+          onChangeText={this.onChangedText}
         />
 
         <Button
-          onPress={this.onCreate}
+          onPress={this.nextToStep}
           title="Submit"
+          disabled={this.state.disabledButton}
         />
       </View>
     )
