@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-class CardView extends Component {
+class CardCreate extends Component {
   render() {
     return (
       <View style={styles.cardWrapper}>
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CardView
+export default CardCreate

@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
 
+import { CardCreate } from './cardCreate'
+
 class NewDeck extends Component {
 
   state = {
     disabledButton: true
-  }
-
-  nextToStep = () => {
-    console.log('ahhaha')
   }
 
   onChangedText = title => {
@@ -18,6 +16,11 @@ class NewDeck extends Component {
   }
 
   render() {
+
+    const { navigation } = this.props
+
+    console.log(navigation)
+
     return (
       <View style={styles.newDeckWrapper}>
         <Text style={styles.title}>What is the title of your new deck?</Text>
@@ -29,7 +32,7 @@ class NewDeck extends Component {
         />
 
         <Button
-          onPress={this.nextToStep}
+          onPress={() => navigation.navigate('CardCreate')}
           title="Submit"
           disabled={this.state.disabledButton}
         />

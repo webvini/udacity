@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { TabNavigator, StackNavigator } from 'react-navigation'
+import { TabNavigator } from 'react-navigation'
 
 import Deck from './deck'
-import NewDeck from './newDeck'
+import NavDeck from './navDeck'
 
 const MainNavigation = TabNavigator({
   Deck: {
@@ -12,8 +12,8 @@ const MainNavigation = TabNavigator({
       title: 'Decks'
     }
   },
-  NewDeck: {
-    screen: NewDeck,
+  NavDeck: {
+    screen: NavDeck,
     navigationOptions: {
       title: 'New Deck'
     }
