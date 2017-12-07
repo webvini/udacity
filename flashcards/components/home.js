@@ -1,19 +1,29 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 
 import Deck from './deck'
-import NavDeck from './navDeck'
+import NewDeck from './newDeck'
+import CardCreate from './cardCreate'
+
+const InnerNavigation = StackNavigator({
+  newDeck: {
+    screen: NewDeck
+  },
+  cardCreate: {
+    screen: CardCreate
+  }
+}) 
 
 const MainNavigation = TabNavigator({
   Deck: {
     screen: Deck,
     navigationOptions: {
       title: 'Decks'
-    }
+    },
   },
   NavDeck: {
-    screen: NavDeck,
+    screen: InnerNavigation,
     navigationOptions: {
       title: 'New Deck'
     }
