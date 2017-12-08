@@ -11,7 +11,10 @@ const InnerNavigation = StackNavigator({
     screen: NewDeck
   },
   cardCreate: {
-    screen: CardCreate
+    screen: CardCreate,
+    navigationOptions: {
+      title: 'Add Card'
+    }
   }
 }) 
 

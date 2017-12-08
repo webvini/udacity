@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   input: {
-    color: '#ccc',
+    color: '#999',
     marginTop: 20,
     marginBottom: 20,
     padding: 10,
