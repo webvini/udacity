@@ -4,6 +4,11 @@ import { View, Text, Button } from 'react-native'
 import { styles } from './styles'
 
 class Details extends Component {
+
+  temp = () => {
+    return
+  }
+
   render() {
     return (
       <View style={styles.detailsWrapper}>
@@ -13,8 +18,8 @@ class Details extends Component {
         </View>
 
         <View>
-          <Button title="Add Card" />
-          <Button title="Start Quiz" />
+          <Button title="Add Card" onPress={this.temp} />
+          <Button title="Start Quiz" onPress={this.temp} />
         </View>
       </View>
     )
