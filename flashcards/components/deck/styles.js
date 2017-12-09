@@ -13,5 +13,8 @@ export const styles = StyleSheet.create({
   description: {
     color: '#999',
     textAlign: 'center'
+  },
+  detailsWrapper: {
+    justifyContent: 'space-between'
   }
 })
