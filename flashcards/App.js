@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import configureStore from './store'
 
-import Home from './components/home'
+import Home from './components/home/index'
 
 const store = configureStore()
 

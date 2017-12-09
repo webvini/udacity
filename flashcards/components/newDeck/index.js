@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
+import { View, Text, TextInput, Button } from 'react-native'
+
+import { styles } from './styles'
 
 class NewDeck extends Component {
 
@@ -28,7 +30,7 @@ class NewDeck extends Component {
         />
 
         <Button
-          onPress={() => navigation.navigate('cardCreate')}
+          onPress={() => navigation.navigate('card')}
           title="Submit"
           disabled={this.state.disabledButton}
         />
@@ -36,24 +38,5 @@ class NewDeck extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  newDeckWrapper: {
-    flex: 1,
-    padding: 20
-  },
-  title: {
-    fontSize: 24,
-    textAlign: 'center'
-  },
-  input: {
-    color: '#999',
-    marginTop: 20,
-    marginBottom: 20,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc'
-  }
-})
 
 export default NewDeck
