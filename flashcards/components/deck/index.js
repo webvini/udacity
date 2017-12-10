@@ -6,13 +6,44 @@ import { toDeckDetails } from '../../navigation'
 
 class Deck extends Component {
 
-  decks = () => {
-    const { navigation } = this.props
+  state = {
+    allDecks: {
+      React: {
+        title: 'React',
+        questions: [
+          {
+            question: 'What is React?',
+            answer: 'A library for managing user interfaces'
+          },
+          {
+            question: 'Where do you make Ajax requests in React?',
+            answer: 'The componentDidMount lifecycle event'
+          }
+        ]
+      },
+      JavaScript: {
+        title: 'JavaScript',
+        questions: [
+          {
+            question: 'What is a closure?',
+            answer: 'The combination of a function and the lexical environment within which that function was declared.'
+          }
+        ]
+      }
+    }
+  }
 
+  getAllDecks = () => {
+    
+  }
+
+  deckRender = deck => {
+    const { navigation } = this.props
+    console.log(deck)
     return (
-      <TouchableHighlight onPress={() => navigation.navigate('Details')}>
+      <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details')}>
         <View style={styles.deckWrapper}>
-          <Text style={styles.title}>Javascript</Text>
+          <Text style={styles.title}>{deck.title}</Text>
           <Text style={styles.description}>10 card(s)</Text>
         </View>
       </TouchableHighlight>
@@ -20,9 +51,10 @@ class Deck extends Component {
   }
 
   render() {
+    const allDecks = Object.values(this.state.allDecks)
     return (
-      <View>
-        { this.decks() }
+      <View style={styles.deckWrapper}>
+        { allDecks.map(this.deckRender) }
       </View>
     )
   }
