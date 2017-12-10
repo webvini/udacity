@@ -44,7 +44,7 @@ class Deck extends Component {
       <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details')}>
         <View style={styles.deckWrapper}>
           <Text style={styles.title}>{deck.title}</Text>
-          <Text style={styles.description}>10 card(s)</Text>
+          <Text style={styles.description}>{deck.questions.length} card(s)</Text>
         </View>
       </TouchableHighlight>
     )

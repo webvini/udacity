@@ -5,16 +5,15 @@ import { MainNavigation } from './navigation'
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <View style={styles.containerWrapper}>
       <MainNavigation />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000'
+  containerWrapper: {
+    flex: 1
   },
 })
 

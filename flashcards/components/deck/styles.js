@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   deckWrapper: {
-    flex: 1,
+    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc'
   },
