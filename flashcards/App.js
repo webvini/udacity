@@ -1,27 +1,23 @@
-import React, { Component } from 'react'
-import thunkMiddleware from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import configureStore from './store'
+import React from 'react'
+import { StyleSheet, View, Text } from 'react-native'
 
-import reducer from './reducers'
-import Home from './components/home/index'
+import { MainNavigation } from './navigation'
 
-const store = createStore(
-  reducer,
-  applyMiddleware(
-    thunkMiddleware
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <MainNavigation />
+    </View>
   )
-)
-
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    )
-  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+})
 
 export default App
