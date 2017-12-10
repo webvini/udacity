@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 import { ADD_DECKS, RECEIVE_DECKS } from '../actions'
 
-const init = {
+const initState = {
   React: {
     title: 'React',
     questions: [
@@ -26,7 +26,7 @@ const init = {
   }
 }
 
-const decks = (state = init, action) => {
+const decks = (state = initState, action) => {
   const { deck } = action
 
   switch(action.type) {
