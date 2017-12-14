@@ -10,11 +10,13 @@ class Details extends Component {
   }
 
   render() {
+    const { state } = this.props.navigation
+    console.log(this.props)
     return (
       <View style={styles.detailsWrapper}>
         <View>
-          <Text style={styles.title}>Javascript</Text>
-          <Text style={styles.description}>10 card(s)</Text>
+          <Text style={styles.title}>{state.params.title}</Text>
+          <Text style={styles.description}>{state.params.qtd} card(s)</Text>
         </View>
 
         <View>

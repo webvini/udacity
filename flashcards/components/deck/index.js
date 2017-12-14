@@ -39,9 +39,9 @@ class Deck extends Component {
 
   deckRender = deck => {
     const { navigation } = this.props
-    console.log(deck)
+
     return (
-      <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details')}>
+      <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details', {title: deck.title, qtd: deck.questions.length})}>
         <View style={styles.deckWrapper}>
           <Text style={styles.title}>{deck.title}</Text>
           <Text style={styles.description}>{deck.questions.length} card(s)</Text>
