@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableHighlight, AsyncStorage } from 'react-native'
 
 import { styles } from './styles'
 import { toDeckDetails } from '../../navigation'
@@ -7,9 +7,13 @@ import { toDeckDetails } from '../../navigation'
 class Deck extends Component {
 
   state = {
-    allDecks: {
+    allDecks: []
+  }
+
+  initialValues = () => {
+    const allDecks = {
       React: {
-        title: 'React',
+        title: 'ReactX',
         questions: [
           {
             question: 'What is React?',
@@ -31,10 +35,26 @@ class Deck extends Component {
         ]
       }
     }
+
+    return allDecks
+  }
+
+  componentDidMount() {
+    this.setDeck()
+  }
+
+  setDeck = value => {
+    AsyncStorage.setItem('decks', JSON.stringify(this.initialValues()))
+
+    this.getAllDecks()
   }
 
   getAllDecks = () => {
-    
+    AsyncStorage.getItem("decks").then((value) => {
+      this.setState({
+        allDecks: JSON.parse(value)
+      });
+    })
   }
 
   deckRender = deck => {
@@ -52,6 +72,7 @@ class Deck extends Component {
 
   render() {
     const allDecks = Object.values(this.state.allDecks)
+    
     return (
       <View style={styles.deckWrapper}>
         { allDecks.map(this.deckRender) }
