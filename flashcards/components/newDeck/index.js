@@ -11,6 +11,7 @@ class NewDeck extends Component {
 
   onChangedText = title => {
     this.setState({
+      title,
       disabledButton: !title
     })
   }
@@ -30,7 +31,7 @@ class NewDeck extends Component {
         />
 
         <Button
-          onPress={() => navigation.navigate('card')}
+          onPress={() => navigation.navigate('card', { title: this.state.title })}
           title="Submit"
           disabled={this.state.disabledButton}
         />
