@@ -6,27 +6,39 @@ import { styles } from './styles'
 class Card extends Component {
 
   state = {
+    title: '',
     allDecks: []
   }
 
   componentDidMount() {
     const { state } = this.props.navigation
 
-    this.getAllDecks(state.params.title)
+    this.setState({
+      title: state.params.title
+    }, () => {
+      this.getAllDecks()
+    })
   }
 
-  getAllDecks = title => {
-    AsyncStorage.getItem("decks").then((value) => {
+  isNewDeck = () => {
+    const { allDecks, title } = this.state
+
+    Object.values(allDecks).map((deck) => {
+      if(deck.title === title) {
+        console.log('Opa! já temos esse deck')
+      }else{
+        console.log('Deck novo criado com sucesso')
+      }
+    })
+  }
+
+  getAllDecks = () => {
+    AsyncStorage.getItem('decks').then((decks) => {
       this.setState({
-        allDecks: JSON.parse(value)
+        allDecks: JSON.parse(decks)
       }, () => {
-        const decks = Object.values(this.state.allDecks)
-        decks.map((deck) => {
-          if (deck.title === title) {
-            return
-          }
-        })
-      });
+        this.isNewDeck()
+      })
     })
   }
 
