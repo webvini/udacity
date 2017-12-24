@@ -37,6 +37,10 @@ class Card extends Component {
     })
   }
 
+  setDeck = obj => {
+    AsyncStorage.setItem('decks',  JSON.stringify(obj))
+  }
+
   handleInputCardTitle = el => {
     this.setState({
       cardTitle: el
@@ -50,11 +54,23 @@ class Card extends Component {
   }
 
   onCreate = () => {
+    const { allDecks, title, cardTitle, description } = this.state
+    const questions = {}
+    const obj = {}
+
+    questions.question = cardTitle
+    questions.answer = description
+
     if(this.isNewDeck()) {
-      console.log('é novoooo')
+      obj[title] = {
+        title: title,
+        questions: [questions]
+      }
     }else{
       console.log('ja existe')
     }
+
+    this.setDeck(Object.assign(allDecks, obj))
   }
 
   render() {

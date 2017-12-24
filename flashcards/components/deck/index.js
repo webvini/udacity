@@ -10,42 +10,7 @@ class Deck extends Component {
     allDecks: []
   }
 
-  initialValues = () => {
-    const allDecks = {
-      React: {
-        title: 'ReactX',
-        questions: [
-          {
-            question: 'What is React?',
-            answer: 'A library for managing user interfaces'
-          },
-          {
-            question: 'Where do you make Ajax requests in React?',
-            answer: 'The componentDidMount lifecycle event'
-          }
-        ]
-      },
-      JavaScript: {
-        title: 'JavaScript',
-        questions: [
-          {
-            question: 'What is a closure?',
-            answer: 'The combination of a function and the lexical environment within which that function was declared.'
-          }
-        ]
-      }
-    }
-
-    return allDecks
-  }
-
   componentDidMount() {
-    this.setDeck()
-  }
-
-  setDeck = value => {
-    AsyncStorage.setItem('decks', JSON.stringify(this.initialValues()))
-
     this.getAllDecks()
   }
 
@@ -75,6 +40,10 @@ class Deck extends Component {
     
     return (
       <View style={styles.deckWrapper}>
+        {allDecks.length < 1 &&
+          <Text>You have no deck :(</Text>
+        }
+
         { allDecks.map(this.deckRender) }
       </View>
     )
