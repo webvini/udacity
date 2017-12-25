@@ -53,6 +53,18 @@ class Card extends Component {
     })
   }
 
+  decksMerge = newQuestion => {
+    const { allDecks, title } = this.state
+
+    Object.values(allDecks).map(deck => {
+      if(deck.title === title) {
+        deck.questions.push(newQuestion)
+      }
+    })
+
+    this.setDeck(allDecks)
+  }
+
   onCreate = () => {
     const { allDecks, title, cardTitle, description } = this.state
     const questions = {}
@@ -66,11 +78,11 @@ class Card extends Component {
         title: title,
         questions: [questions]
       }
-    }else{
-      console.log('ja existe')
-    }
 
-    this.setDeck(Object.assign(allDecks, obj))
+      this.setDeck(Object.assign(allDecks, obj))
+    }else{
+      this.decksMerge(questions)
+    }
   }
 
   render() {
