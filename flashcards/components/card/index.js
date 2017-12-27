@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, Button, AsyncStorage } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 
 import { styles } from './styles'
 
 class Card extends Component {
 
   state = {
+    added: false,
     title: '',
     cardTitle: '',
     description: '',
@@ -19,6 +21,21 @@ class Card extends Component {
       title: state.params.title
     }, () => {
       this.getAllDecks()
+    })
+  }
+
+  back = () => {
+    const backAction = NavigationActions.back({
+      key: 'Deck'
+    })
+
+    this.props.navigation.dispatch(backAction)
+    this.props.navigation.navigate('card')
+  }
+
+  callbackForUser = () => {
+    this.setState({
+      added: true
     })
   }
 
@@ -38,7 +55,7 @@ class Card extends Component {
   }
 
   setDeck = obj => {
-    AsyncStorage.setItem('decks',  JSON.stringify(obj))
+    AsyncStorage.setItem('decks', JSON.stringify(obj)).then(this.callbackForUser())
   }
 
   handleInputCardTitle = el => {
@@ -86,28 +103,45 @@ class Card extends Component {
   }
 
   render() {
+    const { navigation } = this.props
+
     return (
       <View style={styles.cardWrapper}>
-        <TextInput
-          name="cardTitle"
-          style={styles.input}
-          placeholder="Card title"
-          onChangeText={this.handleInputCardTitle}
-          value={this.state.cardTitle}
-        />
 
-        <TextInput
-          name="description"
-          style={styles.input}
-          placeholder="Card description"
-          onChangeText={this.handleInputDescription}
-          value={this.state.description}
-        />
+        {this.state.added &&
+          <View>
+            <Text>Success :)</Text>
+            <Button
+              onPress={() => this.back()}
+              title="Back"
+            />
+          </View>
+        }
 
-        <Button
-          onPress={() => this.onCreate()}
-          title="Submit"
-        />
+        {!this.state.added &&
+          <View>
+            <TextInput
+              name="cardTitle"
+              style={styles.input}
+              placeholder="Card title"
+              onChangeText={this.handleInputCardTitle}
+              value={this.state.cardTitle}
+            />
+
+            <TextInput
+              name="description"
+              style={styles.input}
+              placeholder="Card description"
+              onChangeText={this.handleInputDescription}
+              value={this.state.description}
+            />
+
+            <Button
+              onPress={() => this.onCreate()}
+              title="Submit"
+            />
+          </View>
+        }
       </View>
     )
   }
