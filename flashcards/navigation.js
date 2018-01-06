@@ -4,6 +4,7 @@ import Deck from './components/deck/index'
 import Details from './components/deck/details'
 import NewDeck from './components/newDeck/index'
 import Card from './components/card/index'
+import Quiz from './components/quiz/index'
 
 export const stackDeck = StackNavigator({
   List: {
@@ -11,6 +12,9 @@ export const stackDeck = StackNavigator({
   },
   Details: {
     screen: Details
+  },
+  Quiz: {
+    screen: Quiz
   }
 })
 

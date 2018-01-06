@@ -32,7 +32,7 @@ class Deck extends Component {
     const { navigation } = this.props
 
     return (
-      <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details', {title: deck.title, qtd: deck.questions.length})}>
+      <TouchableHighlight key={deck.title} onPress={() => navigation.navigate('Details', {title: deck.title, questions: deck.questions})}>
         <View style={styles.deckWrapper}>
           <Text style={styles.title}>{deck.title}</Text>
           <Text style={styles.description}>{deck.questions.length} card(s)</Text>
@@ -43,7 +43,7 @@ class Deck extends Component {
 
   render() {
     const allDecks = Object.values(this.state.allDecks)
-    console.log('hahahah')
+    console.log(allDecks)
     return (
       <View style={styles.deckWrapper}>
         {allDecks.length < 1 &&
