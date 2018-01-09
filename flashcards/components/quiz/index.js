@@ -6,7 +6,7 @@ import { styles } from './styles'
 class Quiz extends Component {
 
   state = {
-    start: 1,
+    start: 0,
     end: 0,
     showAnswer: false
   }
@@ -25,13 +25,19 @@ class Quiz extends Component {
     })
   }
 
+  answer = value => {
+    this.setState({
+      start: (this.state.start + 1)
+    })
+  }
+
   current = () => {
     const { questions } = this.props.navigation.state.params
     const { start, end } = this.state
 
     return (
       <View>
-        <Text style={styles.step}>{`${start} / ${end}`}</Text>
+        <Text style={styles.step}>{`${start+1} / ${end}`}</Text>
 
         <Text style={styles.title}>{questions[start].question}</Text>
 
@@ -48,11 +54,13 @@ class Quiz extends Component {
           title="Correct"
           color="green"
           disabled={!this.state.showAnswer}
+          onPress={() => this.answer(true)}
         />
         <Button
           title="Incorrect"
           color="red"
           disabled={!this.state.showAnswer}
+          onPress={() => this.answer(false)}
         />
       </View>
     )
@@ -62,8 +70,10 @@ class Quiz extends Component {
     const { start, end } = this.state
     let content
 
-    if( start !== end ) {
-        content = this.current()
+    if( start < end ) {
+      content = this.current()
+    }else{
+      content = <Text>finalizado</Text>
     }
 
     return (
