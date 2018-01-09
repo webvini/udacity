@@ -27,10 +27,12 @@ class Quiz extends Component {
 
   current = () => {
     const { questions } = this.props.navigation.state.params
-    const { start } = this.state
+    const { start, end } = this.state
 
     return (
       <View>
+        <Text style={styles.step}>{`${start} / ${end}`}</Text>
+
         <Text style={styles.title}>{questions[start].question}</Text>
 
         {this.state.showAnswer &&
