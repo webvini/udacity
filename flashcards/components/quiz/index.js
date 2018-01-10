@@ -31,6 +31,7 @@ class Quiz extends Component {
     let count = (value) ? 1 : 0
 
     this.setState({
+      showAnswer: false,
       correct: (correct + count),
       start: (start + 1)
     })
