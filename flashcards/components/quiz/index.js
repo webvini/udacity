@@ -38,11 +38,23 @@ class Quiz extends Component {
   }
 
   contentDone = () => {
-    const { state, navigation } = this.props
+    const { state, navigate } = this.props.navigation
     
     return (
       <View>
         <Text style={styles.done}>{this.state.correct} Answer correct :)</Text>
+
+        <Button
+          title="Back Decks"
+          onPress={() => navigate('List')}
+        />
+
+        <Button
+          title="Restart Quiz"
+          onPress={() => navigate('Quiz',
+            { title: state.params.title, questions: state.params.questions }
+          )}
+        />
       </View>
     )
   }
@@ -62,7 +74,7 @@ class Quiz extends Component {
         }
 
         <Button
-          title="Answer"
+          title="Show Answer"
           onPress={() => this.showAnswer()}
         />
 
