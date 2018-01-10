@@ -13,5 +13,10 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     color: "#ccc"
+  },
+  done: {
+    fontSize: 28,
+    textAlign: 'center',
+    color: "green"
   }
 })

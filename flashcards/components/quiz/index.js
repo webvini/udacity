@@ -8,6 +8,7 @@ class Quiz extends Component {
   state = {
     start: 0,
     end: 0,
+    correct: 0,
     showAnswer: false
   }
   
@@ -26,9 +27,19 @@ class Quiz extends Component {
   }
 
   answer = value => {
+    const { correct, start } = this.state
+    let count = (value) ? 1 : 0
+
     this.setState({
-      start: (this.state.start + 1)
+      correct: (correct + count),
+      start: (start + 1)
     })
+  }
+
+  contentDone = () => {    
+    return (
+      <Text style={styles.done}>{this.state.correct} Answer correct :)</Text>
+    )
   }
 
   current = () => {
@@ -68,13 +79,8 @@ class Quiz extends Component {
 
   render() {
     const { start, end } = this.state
-    let content
 
-    if( start < end ) {
-      content = this.current()
-    }else{
-      content = <Text>finalizado</Text>
-    }
+    let content = ( start < end ) ? this.current() : this.contentDone()
 
     return (
       <View>
