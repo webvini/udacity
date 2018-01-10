@@ -43,12 +43,6 @@ class Quiz extends Component {
     return (
       <View>
         <Text style={styles.done}>{this.state.correct} Answer correct :)</Text>
-        <Button
-          title="Back to Details"
-          onPress={() => navigation.navigate('Details',
-            { title: navigation.state.params.title, questions: navigation.state.params.questions }
-          )}
-        />
       </View>
     )
   }
