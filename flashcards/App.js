@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
+import { setLocalNotification } from './utils/helpers'
 
 import { MainNavigation } from './navigation'
 
-const App = () => {
-  return (
-    <View style={styles.containerWrapper}>
-      <MainNavigation />
-    </View>
-  )
+class App extends Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
+
+  render() {
+    return (
+      <View style={styles.containerWrapper}>
+        <MainNavigation />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
