@@ -5,10 +5,6 @@ import { styles } from './styles'
 
 class Details extends Component {
 
-  temp = () => {
-    return
-  }
-
   render() {
     const { state, navigation } = this.props
 
