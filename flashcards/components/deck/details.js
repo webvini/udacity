@@ -8,6 +8,8 @@ class Details extends Component {
   render() {
     const { state, navigation } = this.props
 
+    console.log(this.props)
+
     return (
       <View style={styles.detailsWrapper}>
         <View>

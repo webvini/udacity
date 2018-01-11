@@ -26,11 +26,10 @@ class Card extends Component {
 
   back = () => {
     const backAction = NavigationActions.back({
-      key: 'Deck'
+      key: null
     })
 
     this.props.navigation.dispatch(backAction)
-    this.props.navigation.navigate('card')
   }
 
   callbackForUser = () => {
