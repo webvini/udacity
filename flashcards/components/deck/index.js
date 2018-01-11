@@ -10,14 +10,8 @@ class Deck extends Component {
     allDecks: []
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    console.log(this.props)
-  }
-
   componentDidMount() {
     this.getAllDecks()
-    console.log('bacon')
   }
 
   getAllDecks = () => {
@@ -43,7 +37,7 @@ class Deck extends Component {
 
   render() {
     const allDecks = Object.values(this.state.allDecks)
-    console.log(allDecks)
+    
     return (
       <View style={styles.deckWrapper}>
         {allDecks.length < 1 &&
