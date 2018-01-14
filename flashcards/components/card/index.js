@@ -56,8 +56,6 @@ class Card extends Component {
   }
 
   setDeck = obj => {
-    console.log('set item', obj)
-    console.log('set item stringify', JSON.stringify(obj))
     AsyncStorage.setItem('decks', JSON.stringify(obj)).then(this.callbackForUser())
   }
 

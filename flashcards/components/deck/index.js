@@ -18,7 +18,6 @@ class Deck extends Component {
   getAllDecks = () => {
     AsyncStorage.getItem('decks').then((decks) => {
       if(decks) {
-        console.log('inicio', Object.values(JSON.parse(decks)))
         this.setState({
           allDecks: Object.values(JSON.parse(decks))
         })
