@@ -7,7 +7,7 @@ import { MainNavigation } from './navigation'
 class App extends Component {
 
   componentDidMount() {
-    //setLocalNotification()
+    setLocalNotification()
   }
 
   render() {
