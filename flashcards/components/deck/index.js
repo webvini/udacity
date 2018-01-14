@@ -7,18 +7,22 @@ import { toDeckDetails } from '../../navigation'
 class Deck extends Component {
 
   state = {
-    allDecks: []
+    allDecks: {}
   }
 
   componentDidMount() {
+    //AsyncStorage.clear()
     this.getAllDecks()
   }
 
   getAllDecks = () => {
-    AsyncStorage.getItem("decks").then((value) => {
-      this.setState({
-        allDecks: JSON.parse(value)
-      });
+    AsyncStorage.getItem('decks').then((decks) => {
+      if(decks) {
+        console.log('inicio', Object.values(JSON.parse(decks)))
+        this.setState({
+          allDecks: Object.values(JSON.parse(decks))
+        })
+      }
     })
   }
 
@@ -36,15 +40,17 @@ class Deck extends Component {
   }
 
   render() {
-    const allDecks = Object.values(this.state.allDecks)
+    const allDecks = this.state.allDecks
     
     return (
       <View style={styles.deckWrapper}>
-        {allDecks.length < 1 &&
+        {Object.keys(allDecks).length < 1 &&
           <Text>You have no deck :(</Text>
         }
 
-        { allDecks.map(this.deckRender) }
+        {Object.keys(allDecks).length > 0 &&
+          allDecks.map(this.deckRender)
+        }
       </View>
     )
   }

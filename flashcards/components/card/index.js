@@ -11,7 +11,7 @@ class Card extends Component {
     title: '',
     cardTitle: '',
     description: '',
-    allDecks: []
+    allDecks: {}
   }
 
   componentDidMount() {
@@ -47,13 +47,17 @@ class Card extends Component {
 
   getAllDecks = () => {
     AsyncStorage.getItem('decks').then((decks) => {
-      this.setState({
-        allDecks: JSON.parse(decks)
-      })
+      if(decks) {
+        this.setState({
+          allDecks: JSON.parse(decks)
+        })
+      }
     })
   }
 
   setDeck = obj => {
+    console.log('set item', obj)
+    console.log('set item stringify', JSON.stringify(obj))
     AsyncStorage.setItem('decks', JSON.stringify(obj)).then(this.callbackForUser())
   }
 
