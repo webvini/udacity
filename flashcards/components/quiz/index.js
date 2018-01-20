@@ -37,6 +37,17 @@ class Quiz extends Component {
     })
   }
 
+  back = () => {
+    const { navigation } = this.props
+
+    const backAction = navigation.navigate('Details',{
+      title: navigation.state.params.title,
+      questions: navigation.state.params.questions
+    })
+
+    this.props.navigation.dispatch(backAction)
+  }
+
   contentDone = () => {
     const { state, navigate } = this.props.navigation
     
@@ -46,7 +57,7 @@ class Quiz extends Component {
 
         <Button
           title="Back Decks"
-          onPress={() => navigate('List')}
+          onPress={() => this.back()}
         />
 
         <Button
