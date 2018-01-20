@@ -19,7 +19,7 @@ class Details extends Component {
           <Button
             title="Add Card"
             onPress={() => navigation.navigate('card',
-              { title: navigation.state.params.title }
+              { title: navigation.state.params.title, questions: navigation.state.params.questions }
             )}
           />
 

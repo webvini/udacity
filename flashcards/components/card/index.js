@@ -9,6 +9,8 @@ class Card extends Component {
   state = {
     added: false,
     title: '',
+    questions: [],
+    currentQuestion: {},
     cardTitle: '',
     description: '',
     allDecks: {}
@@ -18,15 +20,22 @@ class Card extends Component {
     const { state } = this.props.navigation
 
     this.setState({
-      title: state.params.title
+      title: state.params.title,
+      questions: state.params.questions
     }, () => {
       this.getAllDecks()
     })
   }
 
   back = () => {
-    const backAction = NavigationActions.back({
-      key: null
+    const { navigation } = this.props
+    const { currentQuestion } = this.state
+    const questions = (navigation.state.params.questions) ? navigation.state.params.questions : []
+    const newQuestion = questions.concat(currentQuestion)
+
+    const backAction = navigation.navigate('Details',{
+      title: navigation.state.params.title,
+      questions: newQuestion
     })
 
     this.props.navigation.dispatch(backAction)
@@ -84,22 +93,21 @@ class Card extends Component {
   }
 
   onCreate = () => {
-    const { allDecks, title, cardTitle, description } = this.state
-    const questions = {}
+    const { allDecks, title, currentQuestion, cardTitle, description } = this.state
     const obj = {}
 
-    questions.question = cardTitle
-    questions.answer = description
+    currentQuestion.question = cardTitle
+    currentQuestion.answer = description
 
     if(this.isNewDeck()) {
       obj[title] = {
         title: title,
-        questions: [questions]
+        questions: [currentQuestion]
       }
 
       this.setDeck(Object.assign(allDecks, obj))
     }else{
-      this.decksMerge(questions)
+      this.decksMerge(currentQuestion)
     }
   }
 
