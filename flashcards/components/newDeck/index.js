@@ -31,7 +31,7 @@ class NewDeck extends Component {
         />
 
         <Button
-          onPress={() => navigation.navigate('card', { title: this.state.title })}
+          onPress={() => navigation.navigate('Details', { title: this.state.title })}
           title="Submit"
           disabled={this.state.disabledButton}
         />
