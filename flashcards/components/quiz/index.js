@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
 
+import { clearLocalNotification } from '../../utils/helpers'
+
 import { styles } from './styles'
 
 class Quiz extends Component {
@@ -50,6 +52,8 @@ class Quiz extends Component {
 
   contentDone = () => {
     const { state, navigate } = this.props.navigation
+
+    clearLocalNotification();
     
     return (
       <View>
