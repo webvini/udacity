@@ -50,6 +50,13 @@ class Quiz extends Component {
     this.props.navigation.dispatch(backAction)
   }
 
+  restartQuiz = () => {
+    this.setState({
+      start: 0,
+      correct: 0
+    })
+  }
+
   contentDone = () => {
     const { state, navigate } = this.props.navigation
 
@@ -66,9 +73,7 @@ class Quiz extends Component {
 
         <Button
           title="Restart Quiz"
-          onPress={() => navigate('Quiz',
-            { title: state.params.title, questions: state.params.questions }
-          )}
+          onPress={() => this.restartQuiz()}
         />
       </View>
     )
