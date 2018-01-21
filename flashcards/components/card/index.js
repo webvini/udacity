@@ -47,13 +47,6 @@ class Card extends Component {
     })
   }
 
-  isNewDeck = () => {
-    const { allDecks, title } = this.state
-    const result = Object.values(allDecks).filter((deck) => deck.title === title)
-
-    return (result.length <= 0) ? true : false
-  }
-
   getAllDecks = () => {
     AsyncStorage.getItem('decks').then((decks) => {
       if(decks) {
@@ -93,22 +86,12 @@ class Card extends Component {
   }
 
   onCreate = () => {
-    const { allDecks, title, currentQuestion, cardTitle, description } = this.state
-    const obj = {}
+    const {currentQuestion, cardTitle, description } = this.state
 
     currentQuestion.question = cardTitle
     currentQuestion.answer = description
 
-    if(this.isNewDeck()) {
-      obj[title] = {
-        title: title,
-        questions: [currentQuestion]
-      }
-
-      this.setDeck(Object.assign(allDecks, obj))
-    }else{
-      this.decksMerge(currentQuestion)
-    }
+    this.decksMerge(currentQuestion)
   }
 
   render() {
