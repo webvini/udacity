@@ -10,7 +10,10 @@ class Card extends Component {
     added: false,
     title: '',
     questions: [],
-    currentQuestion: {},
+    currentQuestion: {
+      question: '',
+      answer: ''
+    },
     cardTitle: '',
     description: '',
     allDecks: {}
@@ -75,23 +78,28 @@ class Card extends Component {
 
   decksMerge = newQuestion => {
     const { allDecks, title } = this.state
+    const copyAllDecks = Object.assign({}, allDecks)
 
-    Object.values(allDecks).map(deck => {
+    Object.values(copyAllDecks).map(deck => {
       if(deck.title === title) {
         deck.questions.push(newQuestion)
       }
     })
 
-    this.setDeck(allDecks)
+    this.setDeck(copyAllDecks)
   }
 
   onCreate = () => {
-    const {currentQuestion, cardTitle, description } = this.state
+    const { currentQuestion, cardTitle, description } = this.state
 
-    currentQuestion.question = cardTitle
-    currentQuestion.answer = description
-
-    this.decksMerge(currentQuestion)
+    this.setState({
+      currentQuestion: {
+        question: cardTitle,
+        answer: description
+      }
+    }, () => {
+      this.decksMerge(this.state.currentQuestion)
+    })
   }
 
   render() {
