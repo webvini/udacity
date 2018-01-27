@@ -47,7 +47,7 @@ class Quiz extends Component {
       questions: navigation.state.params.questions
     })
 
-    this.props.navigation.dispatch(backAction)
+    navigation.dispatch(backAction)
   }
 
   restartQuiz = () => {
