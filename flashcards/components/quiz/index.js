@@ -68,12 +68,12 @@ class Quiz extends Component {
 
         <Button
           title="Back Decks"
-          onPress={() => this.back()}
+          onPress={this.back}
         />
 
         <Button
           title="Restart Quiz"
-          onPress={() => this.restartQuiz()}
+          onPress={this.restartQuiz}
         />
       </View>
     )

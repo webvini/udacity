@@ -39,7 +39,7 @@ class Deck extends Component {
   }
 
   render() {
-    const allDecks = this.state.allDecks
+    const { allDecks } = this.state
     
     return (
       <View style={styles.deckWrapper}>
