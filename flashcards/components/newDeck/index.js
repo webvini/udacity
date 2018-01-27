@@ -31,7 +31,7 @@ class NewDeck extends Component {
       questions
     })
 
-    this.props.navigation.dispatch(goTo)
+    navigation.dispatch(goTo)
   }
 
   isNewDeck = () => {
