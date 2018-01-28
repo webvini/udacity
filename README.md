@@ -14,7 +14,12 @@ Neste aplicativo, a página principal exibe uma lista de "estantes" (ou seja, ca
 Há possibilidade de mudar o livro de estante, realizar pesquisa de livros e, entre outras features.
 
 
-### Reading
+### Readable
 Já o aplicativo de leitura, a ideia é aplicar os conhecimentos relacionados a **React e Redux**.
 
 Um aplicativo web de conteúdo e comentários. O aplicativo permitirá que os usuários postem conteúdo em categorias pré-definidas, façam comentários em suas próprias postagens e nas de outros usuários e votem nas postagens e comentários. Os usuários poderão editar e excluir postagens e comentários.
+
+
+### Flashcards
+
+Esse projeto é para dispositivos móveis (Android ou iOS - ou ambos) que permite que usuários estudem uma coleção de flashcards. Com o app, os usuários poderão criar diferentes categorias de flashcards chamadas de "baralhos", adicionar flashcards a esses baralhos, e fazer os quizes nestes baralhos.
