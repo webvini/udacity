@@ -1,6 +1,7 @@
 # Udacity
 
-Cada projeto faz parte de um módulo do curso de React da [Udacity](https://br.udacity.com/)
+Cada projeto faz parte de um módulo do curso de React da [Udacity](https://br.udacity.com/).
+
 *Nenhum dos projetos desenvolvidos tiveram atenção para a parte visual.*
 
 
